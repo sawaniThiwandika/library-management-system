@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="798.0" prefWidth="1524.0" style="-fx-background-color: dcbe87;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.MainFormAdminController">
+   <children>
+      <AnchorPane layoutX="8.0" layoutY="17.0" prefHeight="774.0" prefWidth="250.0" style="-fx-background-color: #517174; -fx-background-radius: 10;">
+         <children>
+            <Button fx:id="bookBtn" layoutY="291.0" mnemonicParsing="false" onAction="#bookBtnOnAction" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: 517174;" text="Books" textFill="#fffaf7">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="branchBtn" layoutY="547.0" mnemonicParsing="false" onAction="#branchBtnOnAction" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: 517174;" text="Branchers" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="userBtn" layoutY="348.0" mnemonicParsing="false" onAction="#userBtnOnAction" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: 517174;" text="Users" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="staffBtn" layoutY="604.0" mnemonicParsing="false" onAction="#staffBtnOnAction" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: 517174;" text="Starff" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="transcationBtn" layoutY="409.0" mnemonicParsing="false" onAction="#transactionBtnOnAction" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: 517174;" text="Trancastions" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="dashboardBtn" layoutY="225.0" mnemonicParsing="false" onAction="#dashboardBtnOnAction" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: 517174;" text="DashBoard" textFill="#fffefe">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainForm" layoutX="270.0" layoutY="20.0" prefHeight="768.0" prefWidth="1242.0" style="-fx-background-color: white; -fx-background-radius: 10;" />
+   </children>
+</AnchorPane>

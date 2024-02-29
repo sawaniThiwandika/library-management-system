@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="774.0" prefWidth="1242.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.TransactionFormController">
+   <children>
+      <TableView fx:id="tableTransaction" layoutX="23.0" layoutY="240.0" prefHeight="520.0" prefWidth="1208.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="140.8000144958496" text="Trancation ID" />
+          <TableColumn fx:id="colReservationDate" prefWidth="153.59999084472656" text="Reservation Date" />
+            <TableColumn fx:id="colReturnDate" prefWidth="167.2000732421875" text="Return Date" />
+            <TableColumn fx:id="colBookId" prefWidth="164.79998779296875" text="Book ID" />
+            <TableColumn fx:id="colUserId" prefWidth="177.60000610351562" text="User ID" />
+            <TableColumn fx:id="colUserEmail" prefWidth="255.20001220703125" text="User Email" />
+            <TableColumn fx:id="colIsReturn" prefWidth="147.20001220703125" text="IsReturn" />
+        </columns>
+      </TableView>
+      <Label layoutX="75.0" layoutY="47.0" prefHeight="31.0" prefWidth="74.0" text="Count">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="296.0" layoutY="47.0" prefHeight="31.0" prefWidth="93.0" text="Ongoing">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="541.0" layoutY="47.0" prefHeight="31.0" prefWidth="52.0" text="Late" textFill="#df0c0c">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCount" alignment="CENTER" contentDisplay="CENTER" layoutX="150.0" layoutY="47.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: black;" text="100" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelOngoing" alignment="CENTER" contentDisplay="CENTER" layoutX="387.0" layoutY="47.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: black;" text="50" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelLate" alignment="CENTER" contentDisplay="CENTER" layoutX="593.0" layoutY="47.0" prefHeight="31.0" prefWidth="66.0" style="-fx-border-color: black;" text="10" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

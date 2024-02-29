@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="774.0" prefWidth="1242.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.DashBoardAdminFormController">
+   <children>
+      <JFXButton fx:id="addNewBook" layoutX="96.0" layoutY="88.0" prefHeight="78.0" prefWidth="203.0" style="-fx-background-color: dcbe87;" text="Add New Book">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </JFXButton>
+      <PieChart fx:id="pieChart" layoutX="577.0" layoutY="166.0" prefHeight="538.0" prefWidth="562.0" />
+   </children>
+</AnchorPane>

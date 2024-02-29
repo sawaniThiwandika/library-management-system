@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="774.0" prefWidth="1242.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.UserFormController">
+   <children>
+      <TableView fx:id="tableUsers" layoutX="12.0" layoutY="84.0" prefHeight="660.0" prefWidth="1218.0">
+        <columns>
+          <TableColumn fx:id="colId" prefWidth="95.2000093460083" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="180.79999542236328" text="Name" />
+            <TableColumn fx:id="colEmail" prefWidth="212.0" text="Email" />
+            <TableColumn fx:id="colUserName" prefWidth="202.39999389648438" text="UserName" />
+            <TableColumn fx:id="colPassword" prefWidth="181.5999755859375" text="Password" />
+            <TableColumn fx:id="colHistory" prefWidth="112.0" text="View History" />
+            <TableColumn fx:id="colUpdate" prefWidth="126.4000244140625" text="Update" />
+            <TableColumn fx:id="colDelete" prefWidth="105.5999755859375" text="Delete" />
+        </columns>
+      </TableView>
+      <Label layoutX="26.0" layoutY="34.0" prefHeight="28.0" prefWidth="105.0" text="User Count">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCount" layoutX="144.0" layoutY="40.0" prefHeight="18.0" prefWidth="88.0" style="-fx-background-color: pink;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
