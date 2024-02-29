@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="798.0" prefWidth="1524.0" style="-fx-background-color: dcbe87;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.MainFormAdminController">
    <children>
-      <AnchorPane layoutX="8.0" layoutY="17.0" prefHeight="774.0" prefWidth="250.0" style="-fx-background-color: #517174; -fx-background-radius: 10;">
+      <AnchorPane layoutX="8.0" layoutY="16.0" prefHeight="775.0" prefWidth="250.0" style="-fx-background-color: #517174; -fx-background-radius: 10;">
          <children>
             <Button fx:id="bookBtn" layoutY="291.0" mnemonicParsing="false" onAction="#bookBtnOnAction" prefHeight="42.0" prefWidth="250.0" style="-fx-background-color: 517174;" text="Books" textFill="#fffaf7">
                <font>

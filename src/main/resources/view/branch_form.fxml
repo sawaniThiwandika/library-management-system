@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="774.0" prefWidth="1242.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.BranchFormController">
    <children>
@@ -22,8 +22,14 @@
       <TextField layoutX="361.0" layoutY="167.0" prefHeight="26.0" prefWidth="366.0" />
       <TextField layoutX="467.0" layoutY="241.0" prefHeight="26.0" prefWidth="260.0" />
       <TextField layoutX="64.0" layoutY="241.0" prefHeight="26.0" prefWidth="387.0" />
-      <Label layoutX="361.0" layoutY="137.0" prefHeight="18.0" prefWidth="191.0" text="Address" />
+      <Label layoutX="361.0" layoutY="134.0" prefHeight="18.0" prefWidth="191.0" text="Address" />
       <Label layoutX="467.0" layoutY="211.0" prefHeight="18.0" prefWidth="191.0" text="Contact Number" />
       <Label layoutX="66.0" layoutY="211.0" prefHeight="18.0" prefWidth="191.0" text="Email" />
+      <Label layoutX="66.0" layoutY="154.0" prefHeight="18.0" prefWidth="79.0" text="Branch ID" />
+      <Label alignment="CENTER" layoutX="138.0" layoutY="153.0" prefHeight="18.0" prefWidth="48.0" text="01" textFill="#160bdc">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
