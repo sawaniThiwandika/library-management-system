@@ -76,7 +76,12 @@ public class LoginFormController {
     }
 
     @FXML
-    void registerButtonOnAction(ActionEvent event) {
-
+    void registerButtonOnAction(ActionEvent event) throws IOException {
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/add_user_form.fxml"));
+        Scene scene = new Scene(anchorPane);
+        Stage stage = (Stage) loginPage.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("add user");
+        stage.centerOnScreen();
     }
 }

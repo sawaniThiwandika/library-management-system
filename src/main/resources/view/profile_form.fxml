@@ -7,8 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="774.0" prefWidth="1242.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.ProfileFormController">
+<AnchorPane prefHeight="774.0" prefWidth="1242.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.ProfileFormController">
    <children>
       <Label layoutX="31.0" layoutY="132.0" prefHeight="31.0" prefWidth="98.0" text="User Name" />
       <Label layoutX="31.0" layoutY="268.0" prefHeight="31.0" prefWidth="98.0" text="Password" />
