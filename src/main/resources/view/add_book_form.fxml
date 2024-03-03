@@ -8,8 +8,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="525.0" prefWidth="535.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.AddBookFormController">
+<AnchorPane prefHeight="561.0" prefWidth="597.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.AddBookFormController">
    <children>
       <Label fx:id="labelAddNewBook" layoutX="38.0" layoutY="36.0" prefHeight="34.0" prefWidth="177.0" text="Add New Book">
          <font>
@@ -61,5 +60,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <JFXComboBox fx:id="comboBranch" layoutX="357.0" layoutY="127.0" onAction="#comboBranchOnAction" prefHeight="26.0" prefWidth="189.0" promptText="Branch" />
    </children>
 </AnchorPane>

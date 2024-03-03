@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="642.0" prefWidth="820.0" style="-fx-background-color: rgb(255, 181, 52);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.LoginFormController">
+<AnchorPane fx:id="loginPage" prefHeight="642.0" prefWidth="820.0" style="-fx-background-color: rgb(255, 181, 52);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.LoginFormController">
    <children>
       <AnchorPane layoutX="19.0" layoutY="23.0" prefHeight="596.0" prefWidth="781.0" style="-fx-background-color: white;">
          <children>
@@ -34,7 +34,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </JFXButton>
-                  <Label layoutX="69.0" layoutY="220.0" prefHeight="18.0" prefWidth="153.0" text="Do you have'nt an account?" />
+                  <Label fx:id="lableHaveAccount" layoutX="69.0" layoutY="220.0" prefHeight="18.0" prefWidth="153.0" text="Do you have'nt an account?" />
                   <JFXButton fx:id="registerBtn" layoutX="216.0" layoutY="217.0" onAction="#registerButtonOnAction" text="Register" textFill="#3025fa" />
                   <Label fx:id="forgetPasswordBtn" layoutX="60.0" layoutY="411.0" onDragDetected="#forgetPasswordButtonOnAction" prefHeight="18.0" prefWidth="153.0" text="Forget your password?" />
                </children></AnchorPane>

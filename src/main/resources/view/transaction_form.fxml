@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="774.0" prefWidth="1242.0" style="-fx-background-radius: 10; -fx-background-color: white; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.TransactionFormController">
    <children>
@@ -50,5 +50,6 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <ComboBox fx:id="comboBranch" layoutX="23.0" layoutY="178.0" onAction="#comboBranchOnAction" prefWidth="150.0" promptText="Branch" />
    </children>
 </AnchorPane>

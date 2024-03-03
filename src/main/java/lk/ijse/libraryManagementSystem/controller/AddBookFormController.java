@@ -10,6 +10,9 @@ import javafx.scene.control.TextField;
 public class AddBookFormController {
 
     @FXML
+    private JFXComboBox<?> comboBranch;
+
+    @FXML
     private Button addBtn;
 
     @FXML
@@ -54,5 +57,9 @@ public class AddBookFormController {
     @FXML
     void comboGenreOnAction(ActionEvent event) {
 
+    }
+
+    public void comboBranchOnAction(ActionEvent actionEvent) {
+        
     }
 }
