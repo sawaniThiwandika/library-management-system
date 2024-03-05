@@ -1,13 +1,13 @@
 package lk.ijse.libraryManagementSystem.controller;
 
 import com.jfoenix.controls.JFXComboBox;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -17,9 +17,12 @@ import lk.ijse.libraryManagementSystem.bo.UserBo;
 import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
 import lk.ijse.libraryManagementSystem.bo.impl.UserBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
+import lk.ijse.libraryManagementSystem.dto.UserDto;
+import lk.ijse.libraryManagementSystem.entity.Branch;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddUserFormController {
@@ -82,7 +85,25 @@ public class AddUserFormController {
         String contactText = txtContact.getText();
         String textPassword = txtPassword.getText();
         String branchValue = comboBranch.getValue();
+        BranchDto branch = getBranch(branchValue);
+        boolean saved = userBo.saveUser(new UserDto(nameText, emailText, new Branch(branch.getId(), branch.getName(), branch.getAddress(), branch.getContact(), branch.getEmail(), branch.getUsers(), branch.getBooks()), textPassword, new ArrayList<>(), contactText));
+        if (saved){
+            new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
+        }
+        else {
+            new Alert(Alert.AlertType.ERROR,"Can not Save").show();
+        }
 
+    }
+
+    private BranchDto getBranch(String branchValue) {
+        List<BranchDto> branchDtos = loadAllBranchers();
+        for (BranchDto dto: branchDtos){
+            if(branchValue.equals(dto.getName())){
+                return dto;
+            }
+        }
+        return null;
     }
 
     @FXML

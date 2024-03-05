@@ -12,11 +12,13 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserDto {
-    String name;
-    String email;
-    Branch branch;
-    String password;
+public class BookDto {
+    String id;
+    private Branch branch;
     private List<Transaction> transactions;
-    String contact;
+    String title;
+    String author;
+    String genre;
+    String imagePath;
+    boolean isAvailable;
 }
