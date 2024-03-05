@@ -7,6 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
+
 public class AddBookFormController {
 
     @FXML
@@ -38,6 +42,14 @@ public class AddBookFormController {
 
     @FXML
     private TextField txtTitle;
+    public void initialize() throws SQLException, IOException {
+        generateNextId();
+        labelDate.setText(String.valueOf(LocalDate.now()));
+    }
+
+    private void generateNextId() {
+
+    }
 
     @FXML
     void addBtnOnAction(ActionEvent event) {

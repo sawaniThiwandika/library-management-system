@@ -7,8 +7,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="496.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.AddBranchFormController">
+<AnchorPane prefHeight="578.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.AddBranchFormController">
    <children>
       <Label fx:id="labelAddNewBranch" layoutX="52.0" layoutY="23.0" prefHeight="34.0" prefWidth="177.0" text="Add New Branch">
          <font>
@@ -16,8 +15,8 @@
          </font>
       </Label>
       <Line endX="336.20001220703125" endY="7.62939453125E-6" layoutX="153.0" layoutY="66.0" opacity="0.36" startX="-100.0" />
-      <TextField fx:id="txtAddress" layoutX="52.0" layoutY="205.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
-      <Label layoutX="52.0" layoutY="170.0" prefHeight="34.0" prefWidth="177.0" text="Address * ">
+      <TextField fx:id="txtAddress" layoutX="52.0" layoutY="271.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
+      <Label layoutX="52.0" layoutY="236.0" prefHeight="34.0" prefWidth="177.0" text="Address * ">
          <font>
             <Font size="13.0" />
          </font>
@@ -42,27 +41,33 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtContact" layoutX="52.0" layoutY="287.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
-      <Label layoutX="52.0" layoutY="248.0" prefHeight="34.0" prefWidth="177.0" text="Contact Number * ">
+      <TextField fx:id="txtContact" layoutX="52.0" layoutY="334.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
+      <Label layoutX="52.0" layoutY="299.0" prefHeight="34.0" prefWidth="177.0" text="Contact Number * ">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Button fx:id="cancelBtn" layoutX="332.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancelBtnOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: rgb(50, 205, 50);" text="Cancel" textFill="WHITE">
+      <Button fx:id="cancelBtn" layoutX="346.0" layoutY="528.0" mnemonicParsing="false" onAction="#cancelBtnOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: rgb(50, 205, 50);" text="Cancel" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="addBtn" layoutX="446.0" layoutY="446.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: rgb(19,151,233);" text="Add" textFill="WHITE">
+      <Button fx:id="addBtn" layoutX="457.0" layoutY="528.0" mnemonicParsing="false" onAction="#addBtnOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: rgb(19,151,233);" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="52.0" layoutY="327.0" prefHeight="34.0" prefWidth="177.0" text="Email *">
+      <Label layoutX="52.0" layoutY="369.0" prefHeight="34.0" prefWidth="177.0" text="Email *">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmail" layoutX="52.0" layoutY="361.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
+      <TextField fx:id="txtEmail" layoutX="52.0" layoutY="404.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
+      <Label layoutX="52.0" layoutY="171.0" prefHeight="34.0" prefWidth="177.0" text="Name * ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="52.0" layoutY="205.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
    </children>
 </AnchorPane>
