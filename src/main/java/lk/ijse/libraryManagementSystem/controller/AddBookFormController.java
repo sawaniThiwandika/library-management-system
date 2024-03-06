@@ -59,11 +59,25 @@ public class AddBookFormController {
     BookBo bookBo=new BookBoImpl();
     BranchBo branchBo= new BranchBoImpl();
     String photoPath;
+    BookDto dto;
     public void initialize() throws SQLException, IOException {
         generateNextId();
-
         labelDate.setText(String.valueOf(LocalDate.now()));
         setComboBoxValues();
+
+    }
+    public void setValues(BookDto bookDto){
+      this.dto=bookDto;
+        txtTitle.setText(dto.getTitle());
+        txtAuthor.setText(dto.getAuthor());
+        labelId.setText(dto.getId());
+        comboGenre.setValue(dto.getGenre());
+        comboBranch.setValue(bookDto.getBranch().getName());
+        labelAddNewBook.setText("Book Details");
+        addBtn.setText("Update");
+        cancelBtn.setText("Delete");
+    } public BookDto getValues(){
+        return dto;
     }
 
     private void setComboBoxValues() {

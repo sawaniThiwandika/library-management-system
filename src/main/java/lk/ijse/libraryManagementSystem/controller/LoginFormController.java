@@ -10,9 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.libraryManagementSystem.bo.UserBo;
+import lk.ijse.libraryManagementSystem.bo.impl.UserBoImpl;
+import lk.ijse.libraryManagementSystem.dto.UserDto;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LoginFormController {
 
@@ -37,6 +41,8 @@ public class LoginFormController {
     @FXML
     private AnchorPane loginPage;
      static String type;
+     static UserDto dto;
+     UserBo userBo=new UserBoImpl();
     public void initialize(String type) throws SQLException, IOException {
         this.type=type;
      if (type.equals("Admin")){
@@ -55,15 +61,10 @@ public class LoginFormController {
 
     @FXML
     void loginButtonOnAction(ActionEvent event) throws IOException {
-        if(type.equals("Admin")){
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_admin.fxml"));
-            Scene scene = new Scene(anchorPane);
-            Stage stage = (Stage) loginPage.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("dashboard");
-            stage.centerOnScreen();
-        }
-        else {
+
+
+        boolean checked = checkCredentials();
+        if(checked){
             AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_user.fxml"));
             Scene scene = new Scene(anchorPane);
             Stage stage = (Stage) loginPage.getScene().getWindow();
@@ -72,7 +73,31 @@ public class LoginFormController {
             stage.centerOnScreen();
         }
 
+        if(type.equals("Admin")){
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_admin.fxml"));
+            Scene scene = new Scene(anchorPane);
+            Stage stage = (Stage) loginPage.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("dashboard");
+            stage.centerOnScreen();
+        }
 
+
+
+    }
+
+    private boolean checkCredentials() {
+        ArrayList<UserDto> allUsers = userBo.getAllUsers();
+        for (UserDto userDto: allUsers){
+            if(userDto.getEmail().equals(txtUserName.getText())){
+                if(userDto.getPassword().equals(txtPassword.getText())){
+                    dto=userDto;
+                    return true;
+
+                }
+            }
+        }
+        return false;
     }
 
     @FXML

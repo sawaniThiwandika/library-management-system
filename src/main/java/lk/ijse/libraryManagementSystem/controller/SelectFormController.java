@@ -31,7 +31,7 @@ public class SelectFormController {
 
     @FXML
     void loginBtnOnAction(ActionEvent event) throws IOException, SQLException {
-        if(radioAdmin.isSelected()==true){
+        if(radioAdmin.isSelected()){
             URL resource = this.getClass().getResource("/view/login_form.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(resource);
             Parent load = fxmlLoader.load();
@@ -62,14 +62,14 @@ public class SelectFormController {
     }
     @FXML
     void radioAdminOnAction(ActionEvent event) {
-        if(radioAdmin.isSelected()==true){
+        if(radioAdmin.isSelected()){
             radioUser.setSelected(false);
         }
     }
 
     @FXML
     void radioUserOnAction(ActionEvent event) {
-        if(radioUser.isSelected()==true){
+        if(radioUser.isSelected()){
             radioAdmin.setSelected(false);
         }
     }

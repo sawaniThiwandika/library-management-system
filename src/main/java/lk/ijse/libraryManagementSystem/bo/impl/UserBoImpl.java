@@ -8,6 +8,9 @@ import lk.ijse.libraryManagementSystem.dto.UserDto;
 import lk.ijse.libraryManagementSystem.entity.User;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserBoImpl implements UserBo {
    UserDao userDao=new UserDaoImpl();
     @Override
@@ -16,5 +19,18 @@ public class UserBoImpl implements UserBo {
         boolean isSaved = userDao.save(session, new User(dto.getName(), dto.getEmail(), dto.getBranch(), dto.getPassword(), dto.getTransactions(), dto.getContact()));
         session.close();
         return isSaved;
+    }
+
+    @Override
+    public ArrayList<UserDto> getAllUsers() {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        List<User> users = userDao.getAll(session);
+        session.close();
+        ArrayList<UserDto> userDtos = new ArrayList<>();
+        for (User user:users){
+            userDtos.add(new UserDto(user.getName(),user.getEmail(),user.getBranch(),user.getPassword(),user.getTransactions(),user.getContact()));
+        }
+        return userDtos;
+
     }
 }
