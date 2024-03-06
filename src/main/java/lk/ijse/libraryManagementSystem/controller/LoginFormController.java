@@ -10,8 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.libraryManagementSystem.bo.AdminBo;
 import lk.ijse.libraryManagementSystem.bo.UserBo;
+import lk.ijse.libraryManagementSystem.bo.impl.AdminBoImpl;
 import lk.ijse.libraryManagementSystem.bo.impl.UserBoImpl;
+import lk.ijse.libraryManagementSystem.dto.AdminDto;
 import lk.ijse.libraryManagementSystem.dto.UserDto;
 
 import java.io.IOException;
@@ -43,6 +46,7 @@ public class LoginFormController {
      static String type;
      static UserDto dto;
      UserBo userBo=new UserBoImpl();
+    AdminBo adminBo=new AdminBoImpl();
     public void initialize(String type) throws SQLException, IOException {
         this.type=type;
      if (type.equals("Admin")){
@@ -63,30 +67,51 @@ public class LoginFormController {
     void loginButtonOnAction(ActionEvent event) throws IOException {
 
 
-        boolean checked = checkCredentials();
-        if(checked){
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_user.fxml"));
-            Scene scene = new Scene(anchorPane);
-            Stage stage = (Stage) loginPage.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("dashboard");
-            stage.centerOnScreen();
+        boolean checked = checkCredentialsUser();
+        boolean checkedAdmin = checkCredentialsAdmin();
+        if(type.equals("User")){
+            if(checked){
+                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_user.fxml"));
+                Scene scene = new Scene(anchorPane);
+                Stage stage = (Stage) loginPage.getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("dashboard");
+                stage.centerOnScreen();
+            }
         }
 
+
         if(type.equals("Admin")){
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_admin.fxml"));
-            Scene scene = new Scene(anchorPane);
-            Stage stage = (Stage) loginPage.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("dashboard");
-            stage.centerOnScreen();
+            if(checkedAdmin){
+                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_admin.fxml"));
+                Scene scene = new Scene(anchorPane);
+                Stage stage = (Stage) loginPage.getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("dashboard");
+                stage.centerOnScreen();
+            }
+
         }
 
 
 
     }
 
-    private boolean checkCredentials() {
+    private boolean checkCredentialsAdmin() {
+        ArrayList<AdminDto> allAdmins = adminBo.getAllAdmins();
+        for (AdminDto adminDto: allAdmins){
+            if(adminDto.getEmail().equals(txtUserName.getText())){
+                if(adminDto.getPassword().equals(txtPassword.getText())){
+
+                    return true;
+
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean checkCredentialsUser() {
         ArrayList<UserDto> allUsers = userBo.getAllUsers();
         for (UserDto userDto: allUsers){
             if(userDto.getEmail().equals(txtUserName.getText())){

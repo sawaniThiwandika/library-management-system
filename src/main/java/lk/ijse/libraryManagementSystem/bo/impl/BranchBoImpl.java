@@ -29,9 +29,7 @@ public class BranchBoImpl implements BranchBo {
     @Override
     public boolean saveBranch(BranchDto branchDto) {
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-
         boolean saved = dao.save(session, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(),branchDto.getUsers(),branchDto.getBooks()));
-
         session.close();
         return saved;
     }

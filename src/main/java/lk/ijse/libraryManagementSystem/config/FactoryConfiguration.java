@@ -1,8 +1,5 @@
 package lk.ijse.libraryManagementSystem.config;
-import lk.ijse.libraryManagementSystem.entity.Book;
-import lk.ijse.libraryManagementSystem.entity.Branch;
-import lk.ijse.libraryManagementSystem.entity.Transaction;
-import lk.ijse.libraryManagementSystem.entity.User;
+import lk.ijse.libraryManagementSystem.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,7 +14,8 @@ public class FactoryConfiguration {
                 .addAnnotatedClass(Branch.class)
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(Book.class)
-                .addAnnotatedClass(Transaction.class);
+                .addAnnotatedClass(Transaction.class)
+                .addAnnotatedClass(Admin.class);
         sessionFactory = configuration.buildSessionFactory();
     }
 
