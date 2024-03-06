@@ -4,6 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import lk.ijse.libraryManagementSystem.dto.BookDto;
+import lk.ijse.libraryManagementSystem.dto.TransactionDto;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class OneTransactionFormController {
 
@@ -37,6 +42,13 @@ public class OneTransactionFormController {
 
     @FXML
     void returnBtnOnAction(ActionEvent event) {
+
+    }
+    public void initialize(TransactionDto dto) throws SQLException, IOException {
+        txtTitle.setText(dto.getBook().getTitle());
+        txtAuthor.setText(dto.getBook().getAuthor());
+        txtReturnDate.setText(String.valueOf(dto.getReturnDate()));
+
 
     }
 }

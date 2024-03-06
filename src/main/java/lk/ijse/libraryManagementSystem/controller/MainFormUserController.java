@@ -45,7 +45,7 @@ public class MainFormUserController {
 
         AnchorPane load = FXMLLoader.load(getClass().getResource(forms));
         mainFormUser.getChildren().clear();
-       mainFormUser.getChildren().add(load);
+        mainFormUser.getChildren().add(load);
 
 
         for (int i = 0; i < form.length; i++) {

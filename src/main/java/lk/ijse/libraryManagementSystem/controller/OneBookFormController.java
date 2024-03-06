@@ -44,7 +44,6 @@ public class OneBookFormController {
     TransactionBo transactionBo=new TransactionBoImpl();
     public void initialize(BookDto dto) throws SQLException, IOException {
         bookDto=dto;
-
         labelName.setText(dto.getTitle());
         if(dto.isAvailable()){
             lableAvailability.setText("Available");
