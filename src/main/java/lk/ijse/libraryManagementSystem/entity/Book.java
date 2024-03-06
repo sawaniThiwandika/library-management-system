@@ -21,7 +21,7 @@ public class Book {
     private Branch branch;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
-    private List<Transaction> transactions;
+    private List<UserBookDetails> transactions;
 
     String title;
     String author;

@@ -6,16 +6,24 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.ijse.libraryManagementSystem.bo.TransactionBo;
+import lk.ijse.libraryManagementSystem.bo.impl.TransactionBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BookDto;
+import lk.ijse.libraryManagementSystem.dto.TransactionDto;
+import lk.ijse.libraryManagementSystem.dto.UserDto;
+import lk.ijse.libraryManagementSystem.entity.Book;
+import lk.ijse.libraryManagementSystem.entity.User;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class OneBookFormController {
 
@@ -33,7 +41,9 @@ public class OneBookFormController {
     @FXML
     private ImageView imageView;
     BookDto bookDto;
+    TransactionBo transactionBo=new TransactionBoImpl();
     public void initialize(BookDto dto) throws SQLException, IOException {
+        bookDto=dto;
 
         labelName.setText(dto.getTitle());
         if(dto.isAvailable()){
@@ -53,6 +63,16 @@ public class OneBookFormController {
 
     @FXML
     void btnBorrowOnAction(ActionEvent event) {
+        UserDto userDto = LoginFormController.dto;
+        boolean saved = transactionBo.saveTransaction(new TransactionDto(transactionBo.generateNewTransactionId(), new User(userDto.getName(), userDto.getEmail(), userDto.getBranch(), userDto.getPassword(), userDto.getTransactions(), userDto.getContact()), new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), bookDto.isAvailable()), LocalDate.now(), LocalDate.now().plusDays(14), false));
+        if (saved){
+            new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
+        }
+        else {
+            new Alert(Alert.AlertType.ERROR,"Can not Save").show();
+        }
+
+
 
 
     }

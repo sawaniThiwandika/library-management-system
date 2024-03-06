@@ -21,7 +21,7 @@ public class User {
     @JoinColumn (name="branch_id")
     String password;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
-    private List<Transaction> transactions;
+    private List<UserBookDetails> transactions;
     String contact;
 
 
