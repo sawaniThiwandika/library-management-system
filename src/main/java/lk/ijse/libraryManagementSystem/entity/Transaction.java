@@ -32,4 +32,5 @@ public class Transaction {
     private LocalDate returnDate;
     private boolean isReturn;
 
+
 }

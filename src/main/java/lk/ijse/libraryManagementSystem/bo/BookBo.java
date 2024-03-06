@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface BookBo {
     public String generateNewBookId();
-    public boolean saveBook(BranchDto branchDto);
+    public boolean saveBook(BookDto bookDto);
     public List<BookDto> loadAllBook();
 }
