@@ -11,6 +11,7 @@ public class DashBoardAdminFormController {
 
     @FXML
     private PieChart pieChart;
+    String type;
     public void initialize() {
         // Initialize and set data for the pie chart
         PieChart.Data slice1 = new PieChart.Data("Available", 30);

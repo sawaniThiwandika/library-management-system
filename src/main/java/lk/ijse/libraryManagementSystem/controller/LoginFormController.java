@@ -36,7 +36,7 @@ public class LoginFormController {
 
     @FXML
     private AnchorPane loginPage;
-    String type;
+     static String type;
     public void initialize(String type) throws SQLException, IOException {
         this.type=type;
      if (type.equals("Admin")){

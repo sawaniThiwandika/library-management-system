@@ -7,8 +7,10 @@ import lk.ijse.libraryManagementSystem.dao.impl.BookDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.BookDto;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
 import lk.ijse.libraryManagementSystem.entity.Book;
+import lk.ijse.libraryManagementSystem.entity.Branch;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookBoImpl implements BookBo {
@@ -50,6 +52,13 @@ public class BookBoImpl implements BookBo {
 
     @Override
     public List<BookDto> loadAllBook() {
-        return null;
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        List<Book> bookList = bookDao.getAll(session);
+        ArrayList<BookDto> bookDtos = new ArrayList<>();
+        for (Book book:bookList){
+            bookDtos.add(new BookDto(book.getId(),book.getBranch(),book.getTransactions(),book.getTitle(),book.getAuthor(),book.getGenre(),book.getImagePath(),book.isAvailable()));
+        }
+        return bookDtos;
+
     }
 }

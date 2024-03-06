@@ -34,7 +34,7 @@ public class MainFormAdminController {
     public void initialize() throws SQLException, IOException{
         setForms("/view/dashboard_admin_form.fxml");
     }
-    public void setForms(String forms) throws IOException {
+    public void setForms(String forms) throws IOException, SQLException {
         String[] form = {"/view/dashboard_admin_form.fxml",
                 "/view/book_form.fxml",
                 "/view/user_form.fxml",
@@ -45,7 +45,8 @@ public class MainFormAdminController {
         };
 
         Button[] btn = {dashboardBtn,bookBtn,userBtn,transcationBtn,branchBtn,staffBtn};
-        AnchorPane load = FXMLLoader.load(getClass().getResource(forms));
+       AnchorPane load = FXMLLoader.load(getClass().getResource(forms));
+
         mainForm.getChildren().clear();
         mainForm.getChildren().add(load);
 
@@ -58,33 +59,33 @@ public class MainFormAdminController {
 
     }
     @FXML
-    void bookBtnOnAction(ActionEvent event) throws IOException {
+    void bookBtnOnAction(ActionEvent event) throws IOException, SQLException {
         setForms("/view/book_form.fxml");
     }
 
     @FXML
-    void branchBtnOnAction(ActionEvent event) throws IOException {
+    void branchBtnOnAction(ActionEvent event) throws IOException, SQLException {
         setForms("/view/branch_form.fxml");
 
     }
 
     @FXML
-    void dashboardBtnOnAction(ActionEvent event) throws IOException {
+    void dashboardBtnOnAction(ActionEvent event) throws IOException, SQLException {
         setForms("/view/dashboard_admin_form.fxml");
     }
 
     @FXML
-    void staffBtnOnAction(ActionEvent event) throws IOException {
+    void staffBtnOnAction(ActionEvent event) throws IOException, SQLException {
         setForms("/view/staff_form.fxml");
     }
 
     @FXML
-    void transactionBtnOnAction(ActionEvent event) throws IOException {
+    void transactionBtnOnAction(ActionEvent event) throws IOException, SQLException {
         setForms("/view/transaction_form.fxml");
     }
 
     @FXML
-    void userBtnOnAction(ActionEvent event) throws IOException {
+    void userBtnOnAction(ActionEvent event) throws IOException, SQLException {
         setForms("/view/user_form.fxml");
     }
 
