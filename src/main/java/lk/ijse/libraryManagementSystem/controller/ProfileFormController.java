@@ -45,6 +45,8 @@ public class ProfileFormController {
 
     @FXML
     private TextField txtUserName;
+    @FXML
+    private TextField txtContact;
 
     @FXML
     private Button updateBtn;
@@ -61,6 +63,10 @@ public class ProfileFormController {
 
     @FXML
     void updateBtnOnAction(ActionEvent event) {
+        String textEmail = txtEmail.getText();
+        String nameText = txtUserName.getText();
+        String passwordText = txtPassword.getText();
+        String contactText = txtContact.getText();
 
     }
 }

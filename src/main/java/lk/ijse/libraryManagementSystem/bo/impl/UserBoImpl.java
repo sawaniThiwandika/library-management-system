@@ -33,4 +33,12 @@ public class UserBoImpl implements UserBo {
         return userDtos;
 
     }
+
+    @Override
+    public boolean updateUser(UserDto dto) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        boolean isUpdated = userDao.update(session, new User(dto.getName(), dto.getEmail(), dto.getBranch(), dto.getPassword(), dto.getTransactions(), dto.getContact()));
+        session.close();
+        return isUpdated;
+    }
 }

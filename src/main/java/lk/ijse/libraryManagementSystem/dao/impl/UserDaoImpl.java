@@ -30,4 +30,12 @@ public class UserDaoImpl implements UserDao {
         Query<User> query = session.createQuery(hql, User.class);
         return query.list();
     }
+
+    @Override
+    public boolean update(Session session, User user) {
+        Transaction transaction = session.beginTransaction();
+        session.update(user);
+        transaction.commit();
+        return true;
+    }
 }

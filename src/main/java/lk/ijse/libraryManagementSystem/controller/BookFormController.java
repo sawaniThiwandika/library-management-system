@@ -47,14 +47,21 @@ public class BookFormController {
             OneBookFormController smallController = loader.getController();
             if (type.equals("Admin")){
                 smallController.initialize("Admin",bookDtos.get(i));
+                if(x/4==1){x=0;y=y+1;}
+                gridPane.add(smallPane, x, y);
+                x++;
             }
             else{
-                smallController.initialize(bookDtos.get(i));
+                if(bookDtos.get(i).isAvailable()){
+                    smallController.initialize(bookDtos.get(i));
+                    if(x/4==1){x=0;y=y+1;}
+                    gridPane.add(smallPane, x, y);
+                    x++;
+                }
+
             }
 
-            if(x/4==1){x=0;y=y+1;}
-            gridPane.add(smallPane, x, y);
-            x++;
+           //
         }
 
     }

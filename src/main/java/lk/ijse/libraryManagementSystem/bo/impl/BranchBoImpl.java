@@ -5,6 +5,7 @@ import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.BranchDao;
 import lk.ijse.libraryManagementSystem.dao.impl.BranchDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
+import lk.ijse.libraryManagementSystem.entity.Book;
 import lk.ijse.libraryManagementSystem.entity.Branch;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -44,6 +45,14 @@ public class BranchBoImpl implements BranchBo {
         }
         return branchDtos;
 
+    }
+
+    @Override
+    public boolean updateBranch(BranchDto branchDto) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        boolean saved = dao.update(session, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(),branchDto.getUsers(),branchDto.getBooks()));
+        session.close();
+        return saved;
     }
 
     public String splitId(String currentBranchId) {

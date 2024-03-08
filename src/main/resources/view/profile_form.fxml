@@ -15,9 +15,9 @@
       <TextField fx:id="txtPassword" layoutX="31.0" layoutY="299.0" prefHeight="26.0" prefWidth="314.0" />
       <Label layoutX="31.0" layoutY="200.0" prefHeight="31.0" prefWidth="98.0" text="Email" />
       <TextField fx:id="txtEmail" layoutX="31.0" layoutY="231.0" prefHeight="26.0" prefWidth="314.0" />
-      <Button fx:id="updateBtn" layoutX="31.0" layoutY="368.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="26.0" prefWidth="129.0" text="Update" />
-      <Button fx:id="removeBtn" layoutX="31.0" layoutY="534.0" mnemonicParsing="false" onAction="#removeBtnOnAction" prefHeight="26.0" prefWidth="207.0" text="Remove" />
-      <Label layoutX="31.0" layoutY="498.0" prefHeight="18.0" prefWidth="294.0" text="Are you want to remove your account?" />
+      <Button fx:id="updateBtn" layoutX="31.0" layoutY="458.0" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="26.0" prefWidth="129.0" text="Update" />
+      <Button fx:id="removeBtn" layoutX="25.0" layoutY="624.0" mnemonicParsing="false" onAction="#removeBtnOnAction" prefHeight="26.0" prefWidth="207.0" text="Remove" />
+      <Label layoutX="25.0" layoutY="592.0" prefHeight="18.0" prefWidth="294.0" text="Do you want to remove your account?" />
       <TableView fx:id="tableHistory" layoutX="486.0" layoutY="151.0" prefHeight="486.0" prefWidth="726.0">
          <columns>
             <TableColumn fx:id="colReservstionDate" prefWidth="114.39999675750732" text=" Reservation Date " />
@@ -29,5 +29,7 @@
       </TableView>
       <TextField fx:id="txtSearch" alignment="CENTER" layoutX="655.0" layoutY="88.0" prefHeight="26.0" prefWidth="196.0" promptText="Search in History" style="-fx-background-color: white; -fx-border-color: black;" />
       <Button fx:id="btnSearch" layoutX="873.0" layoutY="89.0" mnemonicParsing="false" onAction="#searchBtnOnAction" text="Search" />
+      <Label layoutX="31.0" layoutY="332.0" prefHeight="31.0" prefWidth="98.0" text="Contact Number" />
+      <TextField fx:id="txtContact" layoutX="31.0" layoutY="363.0" prefHeight="26.0" prefWidth="314.0" />
    </children>
 </AnchorPane>

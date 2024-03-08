@@ -73,6 +73,7 @@ public class AddBookFormController {
         labelId.setText(dto.getId());
         comboGenre.setValue(dto.getGenre());
         comboBranch.setValue(bookDto.getBranch().getName());
+        photoPath=bookDto.getImagePath();
         labelAddNewBook.setText("Book Details");
         addBtn.setText("Update");
         cancelBtn.setText("Delete");
@@ -105,23 +106,57 @@ public class AddBookFormController {
 
     @FXML
     void addBtnOnAction(ActionEvent event) {
-        String labelIdText = labelId.getText();
-        String text = txtTitle.getText();
-        String authorText = txtAuthor.getText();
-        String branchValue = comboBranch.getValue();
-        String genreValue = comboGenre.getValue();
-        String path = photoPath;
-        BranchDto branchDto = getBranch(branchValue);
-        boolean saved = bookBo.saveBook(new BookDto(labelIdText, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()), new ArrayList<>(), text, authorText, genreValue, path, true));
-        if (saved){
-            new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
+
+
+        boolean checked = checkDuplicates();
+        if (checked){
+            String labelIdText = labelId.getText();
+            String text = txtTitle.getText();
+            String authorText = txtAuthor.getText();
+            String branchValue = comboBranch.getValue();
+            String genreValue = comboGenre.getValue();
+            String path = photoPath;
+            BranchDto branchDto = getBranch(branchValue);
+            boolean saved = bookBo.updateBook(new BookDto(labelIdText, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()), new ArrayList<>(), text, authorText, genreValue, path, true));
+            if (saved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Successfully Updated").show();
+            }
+            else {
+                new Alert(Alert.AlertType.ERROR,"Can not Update").show();
+            }
         }
         else {
-            new Alert(Alert.AlertType.ERROR,"Can not Save").show();
+            String labelIdText = labelId.getText();
+            String text = txtTitle.getText();
+            String authorText = txtAuthor.getText();
+            String branchValue = comboBranch.getValue();
+            String genreValue = comboGenre.getValue();
+            String path = photoPath;
+            BranchDto branchDto = getBranch(branchValue);
+            boolean saved = bookBo.saveBook(new BookDto(labelIdText, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()), new ArrayList<>(), text, authorText, genreValue, path, true));
+            if (saved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
+            }
+            else {
+                new Alert(Alert.AlertType.ERROR,"Can not Save").show();
+            }
+
         }
 
 
     }
+
+    private boolean checkDuplicates() {
+        List<BookDto> bookDtos = bookBo.loadAllBook();
+        for (int i=0; i<bookDtos.size();i++){
+            if(bookDtos.get(i).getId().equals(labelId.getText())){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     private BranchDto getBranch(String branchValue) {
         List<BranchDto> branchDtos = loadAllBranchers();
         for (BranchDto dto: branchDtos){

@@ -9,4 +9,5 @@ import java.util.List;
 public interface UserDao {
     public boolean save(Session session,User user);
     public List<User> getAll(Session session);
+    boolean update(Session session, User user);
 }

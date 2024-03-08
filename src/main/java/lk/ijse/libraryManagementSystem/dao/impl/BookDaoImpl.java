@@ -45,4 +45,13 @@ public class BookDaoImpl implements BookDao {
         Query<Book> query = session.createQuery(hql, Book.class);
         return query.list();
     }
+
+    @Override
+    public boolean update(Session session, Book book) {
+        Transaction transaction = session.beginTransaction();
+        session.update(book);
+        transaction.commit();
+        return true;
+
+    }
 }

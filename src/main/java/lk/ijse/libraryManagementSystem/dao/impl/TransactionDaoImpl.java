@@ -25,9 +25,14 @@ public class TransactionDaoImpl implements TransactionDao {
     public boolean save(Session session, UserBookDetails borrow) {
         Transaction transaction = session.beginTransaction();
         String result = (String) session.save(borrow);
+        String hql="UPDATE Book SET isAvailable=:status WHERE id=:id";
+        Query query = session.createQuery(hql);
+        query.setParameter("status",false);
+        query.setParameter("id",borrow.getBook().getId());
+        boolean b = query.executeUpdate() > 0;
         transaction.commit();
         System.out.println("result"+result);
-        if (result==null){
+        if (result==null || !b){
             System.out.println("result if"+result);
             return false;
         }

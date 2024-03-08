@@ -42,4 +42,9 @@ public class BranchDaoImpl implements BranchDao {
         Query<Branch> query = session.createQuery(hql, Branch.class);
         return query.list();
     }
+
+    @Override
+    public boolean update(Session session, Branch branch) {
+        return false;
+    }
 }

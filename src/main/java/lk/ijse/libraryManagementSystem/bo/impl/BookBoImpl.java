@@ -61,4 +61,12 @@ public class BookBoImpl implements BookBo {
         return bookDtos;
 
     }
+
+    @Override
+    public boolean updateBook(BookDto bookDto) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        boolean saved = bookDao.update(session, new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), bookDto.isAvailable()));
+        session.close();
+        return saved;
+    }
 }

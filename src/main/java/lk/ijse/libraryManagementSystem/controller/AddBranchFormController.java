@@ -13,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.ijse.libraryManagementSystem.bo.BranchBo;
 import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
+import lk.ijse.libraryManagementSystem.dto.BookDto;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddBranchFormController {
 
@@ -58,21 +60,50 @@ public class AddBranchFormController {
         String branchId = branchBo.generateNewBranchId();
         labelId.setText(branchId);
     }
+    private boolean checkDuplicates() {
+        List<BranchDto> branchDtos = branchBo.loadAllBranch();
+        for (int i=0; i<branchDtos.size();i++){
+            if(branchDtos.get(i).getId().equals(labelId.getText())){
+                return true;
+            }
+        }
+        return false;
 
+    }
     @FXML
     void addBtnOnAction(ActionEvent event) throws IOException {
-        String addressText = txtAddress.getText();
-        String contactText = txtContact.getText();
-        String emailText = txtEmail.getText();
-        String nameText = txtName.getText();
-        String idText = labelId.getText();
-        boolean saved = branchBo.saveBranch(new BranchDto(idText, nameText, addressText, contactText, emailText,new ArrayList<>(),new ArrayList<>()));
-        if (saved){
-            new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
+        boolean checked = checkDuplicates();
+        if (checked){
+
+            String addressText = txtAddress.getText();
+            String contactText = txtContact.getText();
+            String emailText = txtEmail.getText();
+            String nameText = txtName.getText();
+            String idText = labelId.getText();
+            boolean saved = branchBo.updateBranch(new BranchDto(idText, nameText, addressText, contactText, emailText,new ArrayList<>(),new ArrayList<>()));
+            if (saved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Successfully Updated").show();
+            }
+            else {
+                new Alert(Alert.AlertType.ERROR,"Can not Update").show();
+            }
         }
         else {
-            new Alert(Alert.AlertType.ERROR,"Can not Save").show();
+            String addressText = txtAddress.getText();
+            String contactText = txtContact.getText();
+            String emailText = txtEmail.getText();
+            String nameText = txtName.getText();
+            String idText = labelId.getText();
+            boolean saved = branchBo.saveBranch(new BranchDto(idText, nameText, addressText, contactText, emailText,new ArrayList<>(),new ArrayList<>()));
+            if (saved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
+            }
+            else {
+                new Alert(Alert.AlertType.ERROR,"Can not Save").show();
+            }
         }
+
+
 
     }
 

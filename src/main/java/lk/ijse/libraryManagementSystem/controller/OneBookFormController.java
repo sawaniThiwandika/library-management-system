@@ -13,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.ijse.libraryManagementSystem.bo.TransactionBo;
+import lk.ijse.libraryManagementSystem.bo.impl.BookBoImpl;
+import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
 import lk.ijse.libraryManagementSystem.bo.impl.TransactionBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BookDto;
 import lk.ijse.libraryManagementSystem.dto.TransactionDto;
@@ -63,8 +65,11 @@ public class OneBookFormController {
     @FXML
     void btnBorrowOnAction(ActionEvent event) {
         UserDto userDto = LoginFormController.dto;
-        boolean saved = transactionBo.saveTransaction(new TransactionDto(transactionBo.generateNewTransactionId(), new User(userDto.getName(), userDto.getEmail(), userDto.getBranch(), userDto.getPassword(), userDto.getTransactions(), userDto.getContact()), new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), bookDto.isAvailable()), LocalDate.now(), LocalDate.now().plusDays(14), false));
+        boolean saved = transactionBo.saveTransaction(new TransactionDto(transactionBo.generateNewTransactionId(), new User(userDto.getName(), userDto.getEmail(), userDto.getBranch(), userDto.getPassword(), userDto.getTransactions(), userDto.getContact()), new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), false), LocalDate.now(), LocalDate.now().plusDays(14), false));
+
+
         if (saved){
+
             new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
         }
         else {
