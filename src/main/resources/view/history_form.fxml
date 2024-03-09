@@ -6,11 +6,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="630.0" prefWidth="666.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.HistoryFormController">
    <children>
       <TableView fx:id="tableHistory" layoutX="14.0" layoutY="120.0" prefHeight="486.0" prefWidth="632.0">
         <columns>
+            <TableColumn fx:id="colTID" prefWidth="114.39999675750732" text="Transaction-ID" />
           <TableColumn fx:id="colReservstionDate" prefWidth="114.39999675750732" text=" Reservation Date " />
           <TableColumn fx:id="colReturnDate" minWidth="0.0" prefWidth="128.00003051757812" text="Return Date" />
             <TableColumn fx:id="colBookId" minWidth="0.0" prefWidth="128.00003051757812" text="Book ID" />

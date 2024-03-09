@@ -20,6 +20,7 @@
       <Label layoutX="25.0" layoutY="592.0" prefHeight="18.0" prefWidth="294.0" text="Do you want to remove your account?" />
       <TableView fx:id="tableHistory" layoutX="486.0" layoutY="151.0" prefHeight="486.0" prefWidth="726.0">
          <columns>
+            <TableColumn fx:id="colTID" prefWidth="114.39999675750732" text=" Reservation Date " />
             <TableColumn fx:id="colReservstionDate" prefWidth="114.39999675750732" text=" Reservation Date " />
             <TableColumn fx:id="colReturnDate" minWidth="0.0" prefWidth="128.00003051757812" text="Return Date" />
             <TableColumn fx:id="colBookId" minWidth="0.0" prefWidth="128.00003051757812" text="Book ID" />

@@ -1,11 +1,15 @@
 package lk.ijse.libraryManagementSystem.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+
+import java.util.List;
 
 public class TransactionFormController {
 
@@ -43,9 +47,19 @@ public class TransactionFormController {
     private TableView<?> tableTransaction;
 
     @FXML
-    private ComboBox<?> comboBranch;
+    private ComboBox<String> comboBranch;
+
+    public void initialize(){
+        setComboBoxValues();
+    }
+
+    private void setComboBoxValues() {
+        ObservableList<String> types = FXCollections.observableArrayList();
+        comboBranch.setItems(types);
+    }
 
     public void comboBranchOnAction(ActionEvent actionEvent) {
 
     }
+
 }

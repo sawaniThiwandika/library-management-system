@@ -41,4 +41,12 @@ public class UserBoImpl implements UserBo {
         session.close();
         return isUpdated;
     }
+
+    @Override
+    public UserDto searchUser(String email) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        User user = userDao.search(session, email);
+        session.close();
+        return new UserDto(user.getName(),user.getEmail(),user.getBranch(),user.getPassword(),user.getTransactions(),user.getContact());
+    }
 }
