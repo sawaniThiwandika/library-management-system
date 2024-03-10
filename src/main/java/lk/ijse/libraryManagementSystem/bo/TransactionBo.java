@@ -10,4 +10,5 @@ public interface TransactionBo {
     public boolean saveTransaction( TransactionDto transactionDto);
     public List<TransactionDto> getAllTransactions();
     public boolean updateTransaction( TransactionDto transactionDto);
+    public boolean returnBook(TransactionDto transactionDto);
 }

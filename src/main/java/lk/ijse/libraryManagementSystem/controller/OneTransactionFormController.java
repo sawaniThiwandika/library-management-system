@@ -2,9 +2,7 @@ package lk.ijse.libraryManagementSystem.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import lk.ijse.libraryManagementSystem.bo.TransactionBo;
 import lk.ijse.libraryManagementSystem.bo.impl.TransactionBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BookDto;
@@ -16,6 +14,7 @@ import lk.ijse.libraryManagementSystem.entity.User;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class OneTransactionFormController {
 
@@ -40,18 +39,22 @@ public class OneTransactionFormController {
     TransactionDto dto;
     @FXML
     void extensionBtnOnAction(ActionEvent event) {
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no= new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Optional<ButtonType> type1 = new Alert(Alert.AlertType.INFORMATION, "Do you want to return the book?", yes, no).showAndWait();
 
-        boolean saved = transactionBo.updateTransaction(new TransactionDto(dto.getId(),
-                dto.getUser(),dto.getBook(), dto.getReserveDate(),
-                dto.getReturnDate().plusDays(14), false));
+        if (type1.orElse(no) == yes) {
+            boolean saved = transactionBo.updateTransaction(new TransactionDto(dto.getId(),
+                    dto.getUser(), dto.getBook(), dto.getReserveDate(),
+                    dto.getReturnDate().plusDays(14), false));
 
 
-        if (saved){
+            if (saved) {
 
-            new Alert(Alert.AlertType.CONFIRMATION,"Extension Success").show();
-        }
-        else {
-            new Alert(Alert.AlertType.ERROR,"Can not Extension").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Extension Success").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Can not Extension").show();
+            }
         }
 
     }
@@ -59,11 +62,29 @@ public class OneTransactionFormController {
     @FXML
     void readBtnOnAction(ActionEvent event) {
 
+
     }
 
     @FXML
     void returnBtnOnAction(ActionEvent event) {
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no= new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Optional<ButtonType> type1 = new Alert(Alert.AlertType.INFORMATION, "Do you want to return the book?", yes, no).showAndWait();
 
+        if (type1.orElse(no) == yes) {
+            boolean saved = transactionBo.returnBook(new TransactionDto(dto.getId(),
+                    dto.getUser(),dto.getBook(), dto.getReserveDate(),
+                    dto.getReturnDate(), true));
+
+
+            if (saved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Return Success").show();
+            }
+            else {
+                new Alert(Alert.AlertType.ERROR,"Can not Return").show();
+            }
+
+        }
     }
     public void initialize(TransactionDto dto) throws SQLException, IOException {
         this.dto=dto;

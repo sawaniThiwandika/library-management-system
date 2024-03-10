@@ -10,5 +10,6 @@ public interface TransactionDao {
     public boolean save(Session session, UserBookDetails transaction);
     public List<UserBookDetails> getAll(Session session);
     public boolean update(Session session, UserBookDetails transaction);
+    public boolean returnBook(Session session, UserBookDetails transaction);
 
 }

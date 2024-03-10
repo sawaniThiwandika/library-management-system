@@ -55,4 +55,20 @@ public class TransactionDaoImpl implements TransactionDao {
         transaction.commit();
         return true;
     }
+
+    @Override
+    public boolean returnBook(Session session, UserBookDetails userBookDetails) {
+        Transaction transaction = session.beginTransaction();
+        session.update(userBookDetails);
+        String hql="UPDATE Book SET isAvailable=:status WHERE id=:id";
+        System.out.println("book id"+userBookDetails.getBook().getId());
+
+        Query query = session.createQuery(hql);
+        query.setParameter("status",true);
+        query.setParameter("id",userBookDetails.getBook().getId());
+        boolean b = query.executeUpdate() > 0;
+        System.out.println("b"+b);
+        transaction.commit();
+        return b;
+    }
 }

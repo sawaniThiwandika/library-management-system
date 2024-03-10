@@ -31,12 +31,13 @@ public class ShelfFormController {
         for (TransactionDto dto:allTransactions
              ) {
             if (dto.getUser().getEmail().equals(userDto.getEmail())){
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/one_transaction_form.fxml"));
-                Parent smallPane = loader.load();
-                OneTransactionFormController smallController = loader.getController();
-                smallController.initialize(dto);
-                vBox.getChildren().add(smallPane);
-
+                if(!dto.isReturn()) {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/one_transaction_form.fxml"));
+                    Parent smallPane = loader.load();
+                    OneTransactionFormController smallController = loader.getController();
+                    smallController.initialize(dto);
+                    vBox.getChildren().add(smallPane);
+                }
             }
 
         }

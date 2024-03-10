@@ -63,8 +63,16 @@ public class TransactionBoImpl implements TransactionBo {
 
     @Override
     public boolean updateTransaction(TransactionDto transactionDto) {
+
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         boolean updated = transactionDao.update(session,new UserBookDetails(transactionDto.getId(),transactionDto.getUser(),transactionDto.getBook(),transactionDto.getReserveDate(),transactionDto.getReturnDate(),transactionDto.isReturn()));
+        session.close();
+        return updated;
+    }
+    public boolean returnBook(TransactionDto transactionDto) {
+
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        boolean updated = transactionDao.returnBook(session,new UserBookDetails(transactionDto.getId(),transactionDto.getUser(),transactionDto.getBook(),transactionDto.getReserveDate(),transactionDto.getReturnDate(),transactionDto.isReturn()));
         session.close();
         return updated;
     }
