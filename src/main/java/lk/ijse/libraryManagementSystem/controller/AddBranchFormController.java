@@ -111,4 +111,8 @@ public class AddBranchFormController {
     void cancelBtnOnAction(ActionEvent event) {
 
     }
+
+    public void initialize(BranchDto dto) {
+
+    }
 }

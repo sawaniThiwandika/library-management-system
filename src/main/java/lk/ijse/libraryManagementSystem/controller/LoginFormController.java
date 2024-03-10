@@ -93,8 +93,6 @@ public class LoginFormController {
 
         }
 
-
-
     }
 
     private boolean checkCredentialsAdmin() {
