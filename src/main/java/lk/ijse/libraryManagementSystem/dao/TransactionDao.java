@@ -9,5 +9,6 @@ public interface TransactionDao {
     public UserBookDetails generateNewId(Session session);
     public boolean save(Session session, UserBookDetails transaction);
     public List<UserBookDetails> getAll(Session session);
+    public boolean update(Session session, UserBookDetails transaction);
 
 }

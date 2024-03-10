@@ -47,4 +47,12 @@ public class TransactionDaoImpl implements TransactionDao {
         Query<UserBookDetails> query = session.createQuery(hql, UserBookDetails.class);
         return query.list();
     }
+
+    @Override
+    public boolean update(Session session, UserBookDetails userBookDetails) {
+        Transaction transaction = session.beginTransaction();
+        session.update(userBookDetails);
+        transaction.commit();
+        return true;
+    }
 }

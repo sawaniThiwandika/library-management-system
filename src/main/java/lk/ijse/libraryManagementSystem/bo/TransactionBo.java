@@ -9,4 +9,5 @@ public interface TransactionBo {
     public String generateNewTransactionId();
     public boolean saveTransaction( TransactionDto transactionDto);
     public List<TransactionDto> getAllTransactions();
+    public boolean updateTransaction( TransactionDto transactionDto);
 }
