@@ -1,5 +1,6 @@
 package lk.ijse.libraryManagementSystem.dto.tm;
 
+import javafx.scene.control.CheckBox;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,13 +11,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-public class HistoryTm {
+public class TransactionTm {
+
     String t_id;
     LocalDate reservationDate;
     LocalDate returnDate;
     String bookId;
     String bookName;
-    String author;
+    String user_id;
+    private CheckBox isReturn;
 
 
 }

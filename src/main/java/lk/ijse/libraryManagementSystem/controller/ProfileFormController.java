@@ -87,9 +87,8 @@ public class ProfileFormController {
 
         List<TransactionDto> allTransactions = transactionBo.getAllTransactions();
 
-         /* System.out.println("Size"+userDto.getTransactions().size());}*/
         for (int i=0;i<allTransactions.size();i++){
-            if (allTransactions.get(i).getUser().getEmail().equals(LoginFormController.dto.getEmail())){
+            if (allTransactions.get(i).getUser().getEmail().equals(LoginFormController.dto.getEmail())&&allTransactions.get(i).isReturn()){
                 obListHistory.add(new HistoryTm(allTransactions.get(i).getId(),allTransactions.get(i).getReserveDate(),allTransactions.get(i).getReturnDate(),allTransactions.get(i).getBook().getId(),allTransactions.get(i).getBook().getTitle(),allTransactions.get(i).getBook().getAuthor()));
             }
         }

@@ -65,7 +65,7 @@ public class OneBookFormController {
     @FXML
     void btnBorrowOnAction(ActionEvent event) {
         UserDto userDto = LoginFormController.dto;
-        boolean saved = transactionBo.saveTransaction(new TransactionDto(transactionBo.generateNewTransactionId(), new User(userDto.getName(), userDto.getEmail(), userDto.getBranch(), userDto.getPassword(), userDto.getTransactions(), userDto.getContact()), new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), false), LocalDate.now(), LocalDate.now().plusDays(14), false));
+        boolean saved = transactionBo.saveTransaction(new TransactionDto(transactionBo.generateNewTransactionId(), new User(userDto.getName(), userDto.getEmail(), userDto.getBranch(), userDto.getPassword(), userDto.getTransactions(), userDto.getContact()), new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), false), LocalDate.of(2024, 2, 2), LocalDate.of(2024, 2, 2).plusDays(14), false));
 
 
         if (saved){
