@@ -9,7 +9,6 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -18,11 +17,7 @@ import javafx.stage.Stage;
 import lk.ijse.libraryManagementSystem.bo.BranchBo;
 import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
-import lk.ijse.libraryManagementSystem.dto.TransactionDto;
-import lk.ijse.libraryManagementSystem.dto.UserDto;
 import lk.ijse.libraryManagementSystem.dto.tm.BranchTm;
-import lk.ijse.libraryManagementSystem.dto.tm.HistoryTm;
-import lk.ijse.libraryManagementSystem.dto.tm.TransactionTm;
 
 import java.io.IOException;
 import java.net.URL;
@@ -65,21 +60,16 @@ public class BranchFormController {
 
     private void loadBranches(){
         List<BranchDto> allBranch = branchBo.loadAllBranch();
-       /* Button btnD=new Button("Delete");
-        Button btnUpdate=new Button("isReturn");*/
         for (int i=0;i<allBranch.size();i++){
             Button btnD=new Button("Delete");
-            Button btnUpdate=new Button("isReturn");
-            tableValues.add(new BranchTm(allBranch.get(i).getId(),allBranch.get(i).getAddress(),allBranch.get(i).getContact(),
-                    allBranch.get(i).getEmail(),btnUpdate,btnD));
+            Button btnUpdate=new Button("Update");
+            tableValues.add(new BranchTm(allBranch.get(i).getId(), allBranch.get(i).getAddress(), allBranch.get(i).getContact(),
+                    allBranch.get(i).getEmail(), btnUpdate, btnD));
             deleteBranchButtonOnAction(btnD);
             updateBranchButtonOnAction(btnUpdate,allBranch.get(i));
             btnUpdate.setCursor(Cursor.HAND);
             btnD.setCursor(Cursor.HAND);
         }
-
-
-
 
         tableBranch.setItems(tableValues);
 
@@ -111,7 +101,7 @@ public class BranchFormController {
          AddBranchFormController controller = fxmlLoader.getController();
         controller.initialize(dto);
         Stage stage = new Stage();
-        stage.setTitle("Update customer");
+        stage.setTitle("Update Branch");
         stage.setScene(new Scene(load));
         stage.centerOnScreen();
         stage.initModality(Modality.APPLICATION_MODAL);

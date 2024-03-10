@@ -51,9 +51,21 @@ public class AddBranchFormController {
     @FXML
     private TextField txtName;
     BranchBo branchBo= new BranchBoImpl();
+    BranchDto branchDto;
     public void initialize() throws SQLException, IOException{
         generateNextId();
         labelDate.setText(String.valueOf(LocalDate.now()));
+    }
+    public void initialize(BranchDto dto) {
+        branchDto=dto;
+        labelAddNewBranch.setText("Update Branch Details");
+        addBtn.setText("Update");
+        labelId.setText(dto.getId());
+        txtName.setText(dto.getName());
+        txtEmail.setText(dto.getEmail());
+        txtContact.setText(dto.getContact());
+        txtAddress.setText(dto.getAddress());
+
     }
 
     private void generateNextId() {
@@ -80,7 +92,7 @@ public class AddBranchFormController {
             String emailText = txtEmail.getText();
             String nameText = txtName.getText();
             String idText = labelId.getText();
-            boolean saved = branchBo.updateBranch(new BranchDto(idText, nameText, addressText, contactText, emailText,new ArrayList<>(),new ArrayList<>()));
+            boolean saved = branchBo.updateBranch(new BranchDto(idText, nameText, addressText, contactText, emailText,branchDto.getUsers(),branchDto.getBooks()));
             if (saved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Successfully Updated").show();
             }
@@ -112,7 +124,5 @@ public class AddBranchFormController {
 
     }
 
-    public void initialize(BranchDto dto) {
 
-    }
 }

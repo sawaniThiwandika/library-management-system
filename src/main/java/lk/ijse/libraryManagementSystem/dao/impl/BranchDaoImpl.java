@@ -45,6 +45,18 @@ public class BranchDaoImpl implements BranchDao {
 
     @Override
     public boolean update(Session session, Branch branch) {
-        return false;
+        Transaction transaction = session.beginTransaction();
+        String hql="UPDATE Branch SET name=:newName, contact=:newContact, email=: newEmail,address=:newAddress WHERE id=:id";
+
+
+        Query query = session.createQuery(hql);
+        query.setParameter("newName",branch.getName());
+        query.setParameter("newContact",branch.getContact());
+        query.setParameter("newEmail",branch.getEmail());
+        query.setParameter("newAddress",branch.getAddress());
+        query.setParameter("id",branch.getId());
+        boolean b = query.executeUpdate() > 0;
+        transaction.commit();
+        return b;
     }
 }
