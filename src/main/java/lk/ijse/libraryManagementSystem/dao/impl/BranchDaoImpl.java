@@ -1,5 +1,6 @@
 package lk.ijse.libraryManagementSystem.dao.impl;
 
+import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.BranchDao;
 import lk.ijse.libraryManagementSystem.entity.Branch;
 import org.hibernate.Session;
@@ -58,5 +59,34 @@ public class BranchDaoImpl implements BranchDao {
         boolean b = query.executeUpdate() > 0;
         transaction.commit();
         return b;
+    }
+
+    @Override
+    public boolean delete(Branch branch) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        Transaction transaction = session.beginTransaction();
+       /* String hql="DELETE Branch WHERE id=:id";
+
+
+        Query query = session.createQuery(hql);
+        query.setParameter("id",branch.getId());*/
+        session.delete(branch);
+        transaction.commit();
+        session.close();
+        return true;
+
+    }
+
+    @Override
+    public Branch getBranch(String id) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        Transaction transaction = session.beginTransaction();
+       /* String hql="DELETE Branch WHERE id=:id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id",branch.getId());*/
+        Branch branch = (Branch) session.get( Branch.class,id);
+        transaction.commit();
+        session.close();
+        return branch;
     }
 }

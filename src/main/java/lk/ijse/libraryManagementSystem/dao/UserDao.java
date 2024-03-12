@@ -12,4 +12,5 @@ public interface UserDao {
     public List<User> getAll(Session session);
     boolean update(Session session, User user);
     User search(Session session, String email);
+    boolean delete(User user);
 }

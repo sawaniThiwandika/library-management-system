@@ -1,5 +1,6 @@
 package lk.ijse.libraryManagementSystem.dao.impl;
 
+import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.UserDao;
 import lk.ijse.libraryManagementSystem.entity.Branch;
 import lk.ijse.libraryManagementSystem.entity.User;
@@ -59,5 +60,15 @@ public class UserDaoImpl implements UserDao {
        User user = (User) session.get(User.class,email );
        return user;
 
+    }
+
+    @Override
+    public boolean delete(User user) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(user);
+        transaction.commit();
+        session.close();
+        return true;
     }
 }

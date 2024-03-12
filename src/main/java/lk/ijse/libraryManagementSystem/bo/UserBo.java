@@ -9,4 +9,5 @@ public interface UserBo {
     public ArrayList<UserDto> getAllUsers();
     public boolean updateUser(UserDto dto);
     public UserDto searchUser(String email);
+    public boolean deleteUser(UserDto dto);
 }

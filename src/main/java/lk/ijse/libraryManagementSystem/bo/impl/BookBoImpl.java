@@ -69,4 +69,16 @@ public class BookBoImpl implements BookBo {
         session.close();
         return saved;
     }
+
+    @Override
+    public BookDto getBook(String id) {
+        Book book = bookDao.getBook(id);
+        return new BookDto(book.getId(), book.getBranch(), book.getTransactions(), book.getTitle(), book.getAuthor(), book.getGenre(), book.getImagePath(), book.isAvailable());
+    }
+
+    @Override
+    public boolean deleteBook(BookDto bookDto) {
+        bookDao.delete(new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), bookDto.isAvailable()));
+        return true;
+    }
 }

@@ -180,6 +180,9 @@ public class AddBookFormController {
 
     @FXML
     void cancelBtnOnAction(ActionEvent event) {
+        BookDto book = bookBo.getBook(labelId.getText());
+        bookBo.deleteBook(book);
+
 
     }
 

@@ -89,13 +89,11 @@ public class ProfileFormController {
 
         for (int i=0;i<allTransactions.size();i++){
             if (allTransactions.get(i).getUser().getEmail().equals(LoginFormController.dto.getEmail())&&allTransactions.get(i).isReturn()){
-                obListHistory.add(new HistoryTm(allTransactions.get(i).getId(),allTransactions.get(i).getReserveDate(),allTransactions.get(i).getReturnDate(),allTransactions.get(i).getBook().getId(),allTransactions.get(i).getBook().getTitle(),allTransactions.get(i).getBook().getAuthor()));
+                obListHistory.add(new HistoryTm(allTransactions.get(i).getId(),allTransactions.get(i).getReserveDate(),
+                        allTransactions.get(i).getReturnDate(),allTransactions.get(i).getBook().getId(),
+                        allTransactions.get(i).getBook().getTitle(),allTransactions.get(i).getBook().getAuthor()));
             }
         }
-
-
-
-
         tableHistory.setItems(obListHistory);
 
     }
@@ -111,6 +109,16 @@ public class ProfileFormController {
 
     @FXML
     void removeBtnOnAction(ActionEvent event) {
+        UserDto userDto = userBo.searchUser(txtEmail.getText());
+        boolean deleteUser = userBo.deleteUser(userDto);
+        if (deleteUser){
+            new Alert(Alert.AlertType.CONFIRMATION,"Successfully deleted").show();
+            System.exit(0);
+        }
+        else  {
+            new Alert(Alert.AlertType.ERROR,"Can not delete").show();
+        }
+
 
     }
 

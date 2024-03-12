@@ -49,4 +49,9 @@ public class UserBoImpl implements UserBo {
         session.close();
         return new UserDto(user.getName(),user.getEmail(),user.getBranch(),user.getPassword(),user.getTransactions(),user.getContact());
     }
+
+    @Override
+    public boolean deleteUser(UserDto dto) {
+        return userDao.delete(new User(dto.getName(), dto.getEmail(), dto.getBranch(), dto.getPassword(), dto.getTransactions(), dto.getContact()));
+    }
 }

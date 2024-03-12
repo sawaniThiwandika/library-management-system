@@ -8,9 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class BranchFormController {
 
@@ -63,9 +62,8 @@ public class BranchFormController {
         for (int i=0;i<allBranch.size();i++){
             Button btnD=new Button("Delete");
             Button btnUpdate=new Button("Update");
-            tableValues.add(new BranchTm(allBranch.get(i).getId(), allBranch.get(i).getAddress(), allBranch.get(i).getContact(),
-                    allBranch.get(i).getEmail(), btnUpdate, btnD));
-            deleteBranchButtonOnAction(btnD);
+            tableValues.add(new BranchTm(allBranch.get(i).getId(), allBranch.get(i).getAddress(), allBranch.get(i).getContact(), allBranch.get(i).getEmail(), btnUpdate, btnD));
+            deleteBranchButtonOnAction(btnD,allBranch.get(i));
             updateBranchButtonOnAction(btnUpdate,allBranch.get(i));
             btnUpdate.setCursor(Cursor.HAND);
             btnD.setCursor(Cursor.HAND);
@@ -98,7 +96,7 @@ public class BranchFormController {
         URL resource = this.getClass().getResource("/view/add_branch_form.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(resource);
         Parent load = fxmlLoader.load();
-         AddBranchFormController controller = fxmlLoader.getController();
+        AddBranchFormController controller = fxmlLoader.getController();
         controller.initialize(dto);
         Stage stage = new Stage();
         stage.setTitle("Update Branch");
@@ -109,8 +107,27 @@ public class BranchFormController {
         stage.show();
 
     }
-    private void deleteBranchButtonOnAction(Button btnD) {
+    private void deleteBranchButtonOnAction(Button btnD,BranchDto dto) {
+        btnD.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
+            Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+
+            if (type.orElse(no) == yes) {
+                int focusedIndex = tableBranch.getSelectionModel().getSelectedIndex();
+                BranchTm branchTm = tableBranch.getSelectionModel().getSelectedItem();
+                BranchDto branch = branchBo.getBranch(branchTm.getId());
+                boolean isDeleted = branchBo.deleteBranch(branch);
+                if(isDeleted){
+                    new Alert(Alert.AlertType.CONFIRMATION,"SUCCESSFULLY deleted").show();
+                }
+                tableValues.remove(focusedIndex);
+                System.out.println(focusedIndex);
+                tableBranch.refresh();
+
+            }
+        });
     }
 
     private void setCellValueFactory() {

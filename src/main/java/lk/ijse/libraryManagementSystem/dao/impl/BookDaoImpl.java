@@ -1,5 +1,6 @@
 package lk.ijse.libraryManagementSystem.dao.impl;
 
+import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.BookDao;
 import lk.ijse.libraryManagementSystem.entity.Book;
 import lk.ijse.libraryManagementSystem.entity.Branch;
@@ -53,5 +54,28 @@ public class BookDaoImpl implements BookDao {
         transaction.commit();
         return true;
 
+    }
+
+    @Override
+    public Book getBook(String id) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        Transaction transaction = session.beginTransaction();
+        Book book = (Book) session.get( Book.class,id);
+        transaction.commit();
+        session.close();
+        return book;
+    }
+
+    @Override
+    public boolean delete(Book book) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        Transaction transaction = session.beginTransaction();
+       /* String hql="DELETE Branch WHERE id=:id";
+        Query query = session.createQuery(hql);
+        query.setParameter("id",branch.getId());*/
+        session.delete(book);
+        transaction.commit();
+        session.close();
+        return true;
     }
 }

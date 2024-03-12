@@ -10,4 +10,7 @@ public interface BookBo {
     public boolean saveBook(BookDto bookDto);
     public List<BookDto> loadAllBook();
     public boolean updateBook(BookDto bookDto);
+    BookDto getBook(String id);
+    boolean deleteBook(BookDto dto);
 }
+

@@ -5,10 +5,8 @@ import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.BranchDao;
 import lk.ijse.libraryManagementSystem.dao.impl.BranchDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
-import lk.ijse.libraryManagementSystem.entity.Book;
 import lk.ijse.libraryManagementSystem.entity.Branch;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +51,20 @@ public class BranchBoImpl implements BranchBo {
         boolean saved = dao.update(session, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(),branchDto.getUsers(),branchDto.getBooks()));
         session.close();
         return saved;
+    }
+
+    @Override
+    public boolean deleteBranch(BranchDto dto) {
+
+        boolean deleted = dao.delete(new Branch(dto.getId(),dto.getName(),dto.getAddress(),dto.getContact(),dto.getEmail(),dto.getUsers(),dto.getBooks()));
+
+        return deleted;
+    }
+
+    @Override
+    public  BranchDto getBranch(String id) {
+        Branch branch = dao.getBranch(id);
+        return new BranchDto(branch.getId(),branch.getName(),branch.getAddress(),branch.getContact(),branch.getEmail(),branch.getUsers(),branch.getBooks());
     }
 
     public String splitId(String currentBranchId) {

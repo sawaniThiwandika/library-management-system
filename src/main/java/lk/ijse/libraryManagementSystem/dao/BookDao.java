@@ -13,4 +13,6 @@ public interface BookDao {
 
     boolean update(Session session, Book book);
 
+    Book getBook(String id);
+    boolean delete(Book book);
 }
