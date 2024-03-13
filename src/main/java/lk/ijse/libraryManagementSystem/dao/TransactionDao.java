@@ -6,10 +6,10 @@ import org.hibernate.Session;
 import java.util.List;
 
 public interface TransactionDao {
-    public UserBookDetails generateNewId(Session session);
-    public boolean save(Session session, UserBookDetails transaction);
-    public List<UserBookDetails> getAll(Session session);
-    public boolean update(Session session, UserBookDetails transaction);
-    public boolean returnBook(Session session, UserBookDetails transaction);
+    public UserBookDetails generateNewId();
+    public boolean save( UserBookDetails transaction);
+    public List<UserBookDetails> getAll();
+    public boolean update( UserBookDetails transaction);
+    public boolean returnBook( UserBookDetails transaction);
 
 }

@@ -6,10 +6,10 @@ import org.hibernate.Session;
 import java.util.List;
 
 public interface BranchDao {
-   public Branch generateNewId(Session session);
-   public boolean save(Session session, Branch branch);
-   public List<Branch> getAll(Session session);
-   boolean update(Session session, Branch branch);
+   public Branch generateNewId();
+   public boolean save( Branch branch);
+   public List<Branch> getAll();
+   boolean update(Branch branch);
 
    boolean delete(Branch id);
    Branch getBranch(String id);

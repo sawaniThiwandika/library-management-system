@@ -1,14 +1,10 @@
 package lk.ijse.libraryManagementSystem.bo.impl;
 
 import lk.ijse.libraryManagementSystem.bo.TransactionBo;
-import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.TransactionDao;
 import lk.ijse.libraryManagementSystem.dao.impl.TransactionDaoImpl;
-import lk.ijse.libraryManagementSystem.dto.BranchDto;
 import lk.ijse.libraryManagementSystem.dto.TransactionDto;
-import lk.ijse.libraryManagementSystem.entity.Branch;
 import lk.ijse.libraryManagementSystem.entity.UserBookDetails;
-import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +13,9 @@ public class TransactionBoImpl implements TransactionBo {
     TransactionDao transactionDao=new TransactionDaoImpl();
     @Override
     public String generateNewTransactionId() {
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        UserBookDetails userBookDetails = transactionDao.generateNewId(session);
-        session.close();
-        if(!(userBookDetails.getId()==null)) {
+
+        UserBookDetails userBookDetails = transactionDao.generateNewId();
+        if (!(userBookDetails.getId() == null)) {
             return splitId(userBookDetails.getId());
         }
         return splitId(null);
@@ -44,19 +39,18 @@ public class TransactionBoImpl implements TransactionBo {
 
     @Override
     public boolean saveTransaction(TransactionDto transactionDto) {
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        boolean saved = transactionDao.save(session,new UserBookDetails(transactionDto.getId(),transactionDto.getUser(),transactionDto.getBook(),transactionDto.getReserveDate(),transactionDto.getReturnDate(),transactionDto.isReturn()));
-        session.close();
+
+        boolean saved = transactionDao.save(new UserBookDetails(transactionDto.getId(), transactionDto.getUser(), transactionDto.getBook(), transactionDto.getReserveDate(), transactionDto.getReturnDate(), transactionDto.isReturn()));
         return saved;
     }
 
     @Override
     public List<TransactionDto> getAllTransactions() {
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        List<UserBookDetails> transactionList = transactionDao.getAll(session);
+
+        List<UserBookDetails> transactionList = transactionDao.getAll();
         ArrayList<TransactionDto> transactionDtos = new ArrayList<>();
-        for (UserBookDetails detail:transactionList){
-            transactionDtos.add(new TransactionDto(detail.getId(),detail.getUser(),detail.getBook(),detail.getReserveDate(),detail.getReturnDate(),detail.isReturn()));
+        for (UserBookDetails detail : transactionList) {
+            transactionDtos.add(new TransactionDto(detail.getId(), detail.getUser(), detail.getBook(), detail.getReserveDate(), detail.getReturnDate(), detail.isReturn()));
         }
         return transactionDtos;
     }
@@ -64,16 +58,14 @@ public class TransactionBoImpl implements TransactionBo {
     @Override
     public boolean updateTransaction(TransactionDto transactionDto) {
 
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        boolean updated = transactionDao.update(session,new UserBookDetails(transactionDto.getId(),transactionDto.getUser(),transactionDto.getBook(),transactionDto.getReserveDate(),transactionDto.getReturnDate(),transactionDto.isReturn()));
-        session.close();
+
+        boolean updated = transactionDao.update(new UserBookDetails(transactionDto.getId(), transactionDto.getUser(), transactionDto.getBook(), transactionDto.getReserveDate(), transactionDto.getReturnDate(), transactionDto.isReturn()));
         return updated;
     }
     public boolean returnBook(TransactionDto transactionDto) {
 
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        boolean updated = transactionDao.returnBook(session,new UserBookDetails(transactionDto.getId(),transactionDto.getUser(),transactionDto.getBook(),transactionDto.getReserveDate(),transactionDto.getReturnDate(),transactionDto.isReturn()));
-        session.close();
+
+        boolean updated = transactionDao.returnBook(new UserBookDetails(transactionDto.getId(), transactionDto.getUser(), transactionDto.getBook(), transactionDto.getReserveDate(), transactionDto.getReturnDate(), transactionDto.isReturn()));
         return updated;
     }
 }

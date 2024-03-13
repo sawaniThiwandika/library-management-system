@@ -7,11 +7,11 @@ import org.hibernate.Session;
 import java.util.List;
 
 public interface BookDao {
-    public Book generateNewId(Session session);
-    public boolean save(Session session, Book book);
-    public List<Book> getAll(Session session);
+    public Book generateNewId();
+    public boolean save( Book book);
+    public List<Book> getAll();
 
-    boolean update(Session session, Book book);
+    boolean update( Book book);
 
     Book getBook(String id);
     boolean delete(Book book);

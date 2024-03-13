@@ -105,7 +105,10 @@ public class TransactionFormController {
     public boolean checkLate(TableRow<TransactionTm> currentRow) {
         TransactionTm item = currentRow.getItem();
         if (item.getReturnDate().isBefore(LocalDate.now())) {
-            return false;
+            if(!item.getIsReturn().isSelected()){
+                return false;
+            }
+
         }
         return true;
     }

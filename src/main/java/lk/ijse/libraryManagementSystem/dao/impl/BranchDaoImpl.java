@@ -12,52 +12,62 @@ import java.util.List;
 public class BranchDaoImpl implements BranchDao {
 
     @Override
-    public Branch generateNewId(Session session) {
-        String hql=" FROM Branch ORDER BY id DESC LIMIT 1";
+    public Branch generateNewId() {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        String hql = " FROM Branch ORDER BY id DESC LIMIT 1";
         Query<Branch> query = session.createQuery(hql, Branch.class);
-        if(query.list().isEmpty()){
+        List<Branch> list = query.list();
+        session.close();
+        if (list.isEmpty()) {
             return new Branch();
+        } else {
+            return list.get(0);
         }
-        else{return query.list().get(0);}
 
     }
 
     @Override
-    public boolean save(Session session, Branch branch) {
+    public boolean save(Branch branch) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
         String result = (String) session.save(branch);
         transaction.commit();
-        System.out.println("result"+result);
-        if (result==null){
-            System.out.println("result if"+result);
+        session.close();
+        System.out.println("result" + result);
+        if (result == null) {
+            System.out.println("result if" + result);
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
 
     @Override
-    public List<Branch> getAll(Session session) {
-        String hql=" FROM Branch ";
+    public List<Branch> getAll() {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        String hql = " FROM Branch ";
         Query<Branch> query = session.createQuery(hql, Branch.class);
-        return query.list();
+        List<Branch> list = query.list();
+        session.close();
+        return list;
     }
 
     @Override
-    public boolean update(Session session, Branch branch) {
+    public boolean update(Branch branch) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
-        String hql="UPDATE Branch SET name=:newName, contact=:newContact, email=: newEmail,address=:newAddress WHERE id=:id";
+        String hql = "UPDATE Branch SET name=:newName, contact=:newContact, email=: newEmail,address=:newAddress WHERE id=:id";
 
 
         Query query = session.createQuery(hql);
-        query.setParameter("newName",branch.getName());
-        query.setParameter("newContact",branch.getContact());
-        query.setParameter("newEmail",branch.getEmail());
-        query.setParameter("newAddress",branch.getAddress());
-        query.setParameter("id",branch.getId());
+        query.setParameter("newName", branch.getName());
+        query.setParameter("newContact", branch.getContact());
+        query.setParameter("newEmail", branch.getEmail());
+        query.setParameter("newAddress", branch.getAddress());
+        query.setParameter("id", branch.getId());
         boolean b = query.executeUpdate() > 0;
         transaction.commit();
+        session.close();
         return b;
     }
 

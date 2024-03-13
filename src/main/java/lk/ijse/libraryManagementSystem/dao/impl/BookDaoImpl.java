@@ -3,7 +3,6 @@ package lk.ijse.libraryManagementSystem.dao.impl;
 import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.BookDao;
 import lk.ijse.libraryManagementSystem.entity.Book;
-import lk.ijse.libraryManagementSystem.entity.Branch;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -13,45 +12,56 @@ import java.util.List;
 public class BookDaoImpl implements BookDao {
 
     @Override
-    public Book generateNewId(Session session) {
-        String hql="FROM Book ORDER BY id DESC LIMIT 1";
+    public Book generateNewId() {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+
+
+        String hql = "FROM Book ORDER BY id DESC LIMIT 1";
         Query<Book> query = session.createQuery(hql, Book.class);
-        if (query.list().isEmpty()){
+        List<Book> list = query.list();
+        session.close();
+        if (list.isEmpty()) {
             return new Book();
-        }
-        else {
-            return query.list().get(0);
+        } else {
+            return list.get(0);
         }
 
 
     }
 
     @Override
-    public boolean save(Session session, Book book) {
+    public boolean save(Book book) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
         String saved = (String) session.save(book);
         transaction.commit();
-        if (saved==null){
+        session.close();
+        if (saved == null) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
 
     }
 
     @Override
-    public List<Book> getAll(Session session) {
-        String hql=" FROM Book ";
+    public List<Book> getAll() {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        String hql = " FROM Book ";
         Query<Book> query = session.createQuery(hql, Book.class);
-        return query.list();
+        List<Book> list = query.list();
+        session.close();
+        return list;
+
     }
 
     @Override
-    public boolean update(Session session, Book book) {
+    public boolean update(Book book) {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
         session.update(book);
         transaction.commit();
+        session.close();
         return true;
 
     }

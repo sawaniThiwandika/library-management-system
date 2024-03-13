@@ -1,12 +1,10 @@
 package lk.ijse.libraryManagementSystem.bo.impl;
 
 import lk.ijse.libraryManagementSystem.bo.BranchBo;
-import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
 import lk.ijse.libraryManagementSystem.dao.BranchDao;
 import lk.ijse.libraryManagementSystem.dao.impl.BranchDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
 import lk.ijse.libraryManagementSystem.entity.Branch;
-import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +13,10 @@ public class BranchBoImpl implements BranchBo {
    BranchDao dao=new BranchDaoImpl();
     @Override
     public String generateNewBranchId() {
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        Branch branch = dao.generateNewId(session);
-        session.close();
-        if(!(branch.getId()==null)) {
+
+        Branch branch = dao.generateNewId();
+
+        if (!(branch.getId() == null)) {
             return splitId(branch.getId());
         }
         return splitId(null);
@@ -27,19 +25,18 @@ public class BranchBoImpl implements BranchBo {
 
     @Override
     public boolean saveBranch(BranchDto branchDto) {
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        boolean saved = dao.save(session, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(),branchDto.getUsers(),branchDto.getBooks()));
-        session.close();
+
+        boolean saved = dao.save(new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()));
         return saved;
     }
 
     @Override
     public List<BranchDto> loadAllBranch() {
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        List<Branch> branchList = dao.getAll(session);
+
+        List<Branch> branchList = dao.getAll();
         ArrayList<BranchDto> branchDtos = new ArrayList<>();
-        for (Branch branch:branchList){
-            branchDtos.add(new BranchDto(branch.getId(),branch.getName(),branch.getAddress(),branch.getContact(),branch.getEmail(),branch.getUsers(),branch.getBooks()));
+        for (Branch branch : branchList) {
+            branchDtos.add(new BranchDto(branch.getId(), branch.getName(), branch.getAddress(), branch.getContact(), branch.getEmail(), branch.getUsers(), branch.getBooks()));
         }
         return branchDtos;
 
@@ -47,9 +44,9 @@ public class BranchBoImpl implements BranchBo {
 
     @Override
     public boolean updateBranch(BranchDto branchDto) {
-        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        boolean saved = dao.update(session, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(),branchDto.getUsers(),branchDto.getBooks()));
-        session.close();
+
+        boolean saved = dao.update(new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()));
+
         return saved;
     }
 
