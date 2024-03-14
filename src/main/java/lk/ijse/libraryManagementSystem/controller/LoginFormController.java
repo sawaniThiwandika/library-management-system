@@ -5,7 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -32,17 +34,24 @@ public class LoginFormController {
     @FXML
     private JFXButton registerBtn;
 
-    @FXML
-    private TextField txtPassword;
-
-    @FXML
-    private TextField txtUserName;
 
     @FXML
     private Label lableHaveAccount;
 
     @FXML
     private AnchorPane loginPage;
+    @FXML
+    private Button hidePwdBtn;
+
+    @FXML
+    private Button hideUserNameBtn;
+    @FXML
+    private PasswordField pwdField;
+    @FXML
+    private Label labelPassword;
+
+    @FXML
+    private Label labelUserName;
      static String type;
      static UserDto dto;
      UserBo userBo=new UserBoImpl();
@@ -57,6 +66,23 @@ public class LoginFormController {
      }
 
 
+    }
+    @FXML
+    private PasswordField userNameField;
+
+
+    @FXML
+    void hidePwdBtnOnAction(ActionEvent event) {
+       labelPassword.setText(pwdField.getText());
+        pwdField.setVisible(!pwdField.isVisible());
+
+
+    }
+
+    @FXML
+    void hideUserNameBtnOnAction(ActionEvent event) {
+       labelUserName.setText(userNameField.getText());
+        userNameField.setVisible(!userNameField.isVisible());
     }
     @FXML
     void forgetPasswordButtonOnAction(MouseEvent event) {
@@ -96,11 +122,16 @@ public class LoginFormController {
 
     }
 
+
     private boolean checkCredentialsAdmin() {
+
+     String userName= userNameField.getText();
+        String pwdText= pwdField.getText();
+
         ArrayList<AdminDto> allAdmins = adminBo.getAllAdmins();
         for (AdminDto adminDto: allAdmins){
-            if(adminDto.getEmail().equals(txtUserName.getText())){
-                if(adminDto.getPassword().equals(txtPassword.getText())){
+            if(adminDto.getEmail().equals(userName)){
+                if(adminDto.getPassword().equals(pwdText)){
 
                     return true;
 
@@ -111,10 +142,12 @@ public class LoginFormController {
     }
 
     private boolean checkCredentialsUser() {
+
+
         ArrayList<UserDto> allUsers = userBo.getAllUsers();
         for (UserDto userDto: allUsers){
-            if(userDto.getEmail().equals(txtUserName.getText())){
-                if(userDto.getPassword().equals(txtPassword.getText())){
+            if(userDto.getEmail().equals(userNameField.getText())){
+                if(userDto.getPassword().equals(pwdField.getText())){
                     dto=userDto;
                     return true;
 
