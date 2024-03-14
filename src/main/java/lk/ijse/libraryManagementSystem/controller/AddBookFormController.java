@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class AddBookFormController {
 
@@ -108,42 +109,77 @@ public class AddBookFormController {
     void addBtnOnAction(ActionEvent event) {
 
 
-        boolean checked = checkDuplicates();
-        if (checked){
-            String labelIdText = labelId.getText();
-            String text = txtTitle.getText();
-            String authorText = txtAuthor.getText();
-            String branchValue = comboBranch.getValue();
-            String genreValue = comboGenre.getValue();
-            String path = photoPath;
-            BranchDto branchDto = getBranch(branchValue);
-            boolean saved = bookBo.updateBook(new BookDto(labelIdText, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()), new ArrayList<>(), text, authorText, genreValue, path, true));
-            if (saved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Successfully Updated").show();
-            }
-            else {
-                new Alert(Alert.AlertType.ERROR,"Can not Update").show();
+
+        boolean isValid= validateBook();
+        if(isValid) {
+            boolean checked = checkDuplicates();
+            if (checked) {
+
+                String labelIdText = labelId.getText();
+                String text = txtTitle.getText();
+                String authorText = txtAuthor.getText();
+                String branchValue = comboBranch.getValue();
+                String genreValue = comboGenre.getValue();
+                String path = photoPath;
+                BranchDto branchDto = getBranch(branchValue);
+                boolean saved = bookBo.updateBook(new BookDto(labelIdText, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()), new ArrayList<>(), text, authorText, genreValue, path, true));
+                if (saved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Successfully Updated").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Can not Update").show();
+                }
+            } else {
+                String labelIdText = labelId.getText();
+                String text = txtTitle.getText();
+                String authorText = txtAuthor.getText();
+                String branchValue = comboBranch.getValue();
+                String genreValue = comboGenre.getValue();
+                String path = photoPath;
+                BranchDto branchDto = getBranch(branchValue);
+                boolean saved = bookBo.saveBook(new BookDto(labelIdText, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()), new ArrayList<>(), text, authorText, genreValue, path, true));
+                if (saved) {
+                    new Alert(Alert.AlertType.CONFIRMATION, "Successfully Saved").show();
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "Can not Save").show();
+                }
+
             }
         }
-        else {
-            String labelIdText = labelId.getText();
-            String text = txtTitle.getText();
-            String authorText = txtAuthor.getText();
-            String branchValue = comboBranch.getValue();
-            String genreValue = comboGenre.getValue();
-            String path = photoPath;
-            BranchDto branchDto = getBranch(branchValue);
-            boolean saved = bookBo.saveBook(new BookDto(labelIdText, new Branch(branchDto.getId(), branchDto.getName(), branchDto.getAddress(), branchDto.getContact(), branchDto.getEmail(), branchDto.getUsers(), branchDto.getBooks()), new ArrayList<>(), text, authorText, genreValue, path, true));
-            if (saved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
-            }
-            else {
-                new Alert(Alert.AlertType.ERROR,"Can not Save").show();
-            }
 
+
+    }
+
+    private boolean validateBook() {
+        String name=txtTitle.getText();
+        if(name.isEmpty()){
+            new Alert(Alert.AlertType.ERROR,"Book title field empty").show();
+            return false;
+        }
+        if(txtAuthor.getText().isEmpty()){
+            new Alert(Alert.AlertType.ERROR,"Author Name field empty").show();
+            return false;
+        }
+        if(comboBranch.getValue() == null){
+            new Alert(Alert.AlertType.ERROR,"Select a Branch").show();
+            return false;
+        }
+        if(comboGenre.getValue() == null){
+            new Alert(Alert.AlertType.ERROR,"Genre field empty").show();
+            return false;
         }
 
+        boolean matchName = Pattern.matches("^[A-Za-z]+(?:[ '-][A-Za-z]+)*$",name);
+        if(!matchName){
+            new Alert(Alert.AlertType.ERROR,"Invalid Book name").show();
+            return  false;
+        }
+        boolean matchAuthor = Pattern.matches("^[A-Za-z]+(?:[ '-][A-Za-z]+)*$",txtAuthor.getText());
+        if(!matchAuthor){
+            new Alert(Alert.AlertType.ERROR,"Invalid Author name").show();
+            return  false;
+        }
 
+        return true;
     }
 
     private boolean checkDuplicates() {
