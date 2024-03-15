@@ -110,18 +110,35 @@ public class ProfileFormController {
     @FXML
     void removeBtnOnAction(ActionEvent event) {
         UserDto userDto = userBo.searchUser(txtEmail.getText());
-        boolean deleteUser = userBo.deleteUser(userDto);
-        if (deleteUser){
-            new Alert(Alert.AlertType.CONFIRMATION,"Successfully deleted").show();
-            System.exit(0);
+        boolean checkHaveReturns=checkIncompleteReturns();
+        if (checkHaveReturns){
+            new Alert(Alert.AlertType.ERROR,"Can not delete. Please return your book before delete account").show();
         }
-        else  {
-            new Alert(Alert.AlertType.ERROR,"Can not delete").show();
+        else {
+            boolean deleteUser = userBo.deleteUser(userDto);
+            if (deleteUser){
+                new Alert(Alert.AlertType.CONFIRMATION,"Successfully deleted").show();
+                System.exit(0);
+            }
+            else  {
+                new Alert(Alert.AlertType.ERROR,"Can not delete").show();
+            }
         }
+
 
 
     }
 
+    private boolean checkIncompleteReturns() {
+
+        List<TransactionDto> allTransactions = transactionBo.getAllTransactions();
+        for (int i = 0; i < allTransactions.size(); i++) {
+            if (allTransactions.get(i).getUser().getEmail().equals(LoginFormController.dto.getEmail())&& !allTransactions.get(i).isReturn()) {
+              return true;
+            }
+        }
+        return false;
+    }
     @FXML
     void searchBtnOnAction(ActionEvent event) {
 
@@ -129,11 +146,7 @@ public class ProfileFormController {
 
     @FXML
     void updateBtnOnAction(ActionEvent event) {
-     /*   String name;
-        String email;
-        Branch branch;
-        String password;
-        private List<UserBookDetails> transactions;*/
+
         String contact;
         String textEmail = txtEmail.getText();
         String nameText = txtUserName.getText();

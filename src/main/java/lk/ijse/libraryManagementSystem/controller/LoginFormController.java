@@ -95,7 +95,9 @@ public class LoginFormController {
 
         boolean checked = checkCredentialsUser();
         boolean checkedAdmin = checkCredentialsAdmin();
+        System.out.println("checkUser1: "+checked);
         if(type.equals("User")){
+            System.out.println("checkUser2: "+checked);
             if(checked){
                 AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_user.fxml"));
                 Scene scene = new Scene(anchorPane);
@@ -110,6 +112,7 @@ public class LoginFormController {
 
         if(type.equals("Admin")){
             if(checkedAdmin){
+                System.out.println("checkAdmin2: "+checked);
                 AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/main_form_admin.fxml"));
                 Scene scene = new Scene(anchorPane);
                 Stage stage = (Stage) loginPage.getScene().getWindow();
@@ -142,12 +145,13 @@ public class LoginFormController {
     }
 
     private boolean checkCredentialsUser() {
-
+        String userName= userNameField.getText();
+        String pwdText= pwdField.getText();
 
         ArrayList<UserDto> allUsers = userBo.getAllUsers();
         for (UserDto userDto: allUsers){
-            if(userDto.getEmail().equals(userNameField.getText())){
-                if(userDto.getPassword().equals(pwdField.getText())){
+            if(userDto.getEmail().equals(userName)){
+                if(userDto.getPassword().equals(pwdText)){
                     dto=userDto;
                     return true;
 

@@ -14,15 +14,16 @@ public class UserDaoImpl implements UserDao {
     public boolean save(User user) {
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
-        String saved = (String) session.save(user);
+        session.persist(user);
         transaction.commit();
         session.close();
-        if (saved == null) {
+        /*if (saved == null) {
             System.out.println("result if" + saved);
             return false;
         } else {
             return true;
-        }
+        }*/
+        return true;
     }
 
     @Override
@@ -31,6 +32,7 @@ public class UserDaoImpl implements UserDao {
         String hql = " FROM User ";
         Query<User> query = session.createQuery(hql, User.class);
         List<User> list = query.list();
+        session.close();
         return list;
     }
 
@@ -55,13 +57,15 @@ public class UserDaoImpl implements UserDao {
         query.setParameter("newEmail",user.getEmail());
         boolean b = query.executeUpdate() > 0;
         transaction.commit();
+        session.close();
         return true;
     }
 
     @Override
     public User search(String email) {
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
-        User user = (User) session.get(User.class, email);
+        User user = session.find(User.class, email);
+        session.close();
         return user;
 
     }
@@ -71,7 +75,16 @@ public class UserDaoImpl implements UserDao {
 
         Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(user);
+       /* String hql = "UPDATE Book SET isAvailable=:status WHERE id=:id";
+        for (int i=0; i<user.getTransactions().size();i++){
+            Query query = session.createQuery(hql);
+            query.setParameter("status", false);
+            query.setParameter("id", user.getTransactions().get(i).getBook().getId());
+            boolean b = query.executeUpdate() > 0;
+        }
+*/
+
+        session.remove(user);
         transaction.commit();
         session.close();
         return true;
