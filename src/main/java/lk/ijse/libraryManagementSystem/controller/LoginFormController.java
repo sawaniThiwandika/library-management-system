@@ -5,10 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -107,6 +104,9 @@ public class LoginFormController {
                 stage.centerOnScreen();
 
             }
+            else {
+                new Alert(Alert.AlertType.ERROR,"Incorrect username or Password. Try again").show();
+            }
         }
 
 
@@ -119,6 +119,9 @@ public class LoginFormController {
                 stage.setScene(scene);
                 stage.setTitle("dashboard");
                 stage.centerOnScreen();
+            }
+            else {
+                new Alert(Alert.AlertType.ERROR,"Incorrect username or Password. Try again").show();
             }
 
         }

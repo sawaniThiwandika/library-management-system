@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +28,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class OneBookFormController {
 
@@ -65,19 +68,24 @@ public class OneBookFormController {
     @FXML
     void btnBorrowOnAction(ActionEvent event) {
         UserDto userDto = LoginFormController.dto;
-        boolean saved = transactionBo.saveTransaction(new TransactionDto(transactionBo.generateNewTransactionId(),
-                new User(userDto.getName(), userDto.getEmail(), userDto.getBranch(), userDto.getPassword(), userDto.getTransactions(),
-                        userDto.getContact()), new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(),
-                bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), false), LocalDate.of(2024, 2, 2),
-                LocalDate.of(2024, 2, 2).plusDays(14), false));
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no= new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Optional<ButtonType> type1 = new Alert(Alert.AlertType.INFORMATION, "Do you want to borrow this book?", yes, no).showAndWait();
+
+        if (type1.orElse(no) == yes) {
+            boolean saved = transactionBo.saveTransaction(new TransactionDto(transactionBo.generateNewTransactionId(),
+                    new User(userDto.getName(), userDto.getEmail(), userDto.getBranch(), userDto.getPassword(), userDto.getTransactions(),
+                            userDto.getContact()), new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(),
+                    bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), false), LocalDate.now(),
+                    LocalDate.now().plusDays(14), false));
 
 
-        if (saved){
+            if (saved) {
 
-            new Alert(Alert.AlertType.CONFIRMATION,"Successfully Saved").show();
-        }
-        else {
-            new Alert(Alert.AlertType.ERROR,"Can not Save").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Successfully Saved").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Can not Save").show();
+            }
         }
 
 
