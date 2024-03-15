@@ -198,5 +198,11 @@ public class AddUserFormController {
     }
 
 
-
+    public void initialize(UserDto dto) {
+        txtPassword.setText(dto.getPassword());
+        txtEmail.setText(dto.getEmail());
+        txtUserName.setText(dto.getName());
+        txtContact.setText(dto.getName());
+        comboBranch.setValue(dto.getBranch().getName());
+    }
 }
