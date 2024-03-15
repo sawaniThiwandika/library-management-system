@@ -52,6 +52,8 @@ public class BookFormController {
                 x++;
             }
             else{
+                addBtn.setVisible(false);
+                addBtn.setDisable(true);
                 if(bookDtos.get(i).isAvailable()){
                     smallController.initialize(bookDtos.get(i));
                     if(x/4==1){x=0;y=y+1;}

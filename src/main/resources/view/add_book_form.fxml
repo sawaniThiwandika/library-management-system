@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="561.0" prefWidth="597.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.AddBookFormController">
    <children>
-      <Label fx:id="labelAddNewBook" layoutX="38.0" layoutY="36.0" prefHeight="34.0" prefWidth="177.0" text="Add New Book">
+      <Label fx:id="labelAddNewBook" layoutX="38.0" layoutY="36.0" prefHeight="34.0" prefWidth="354.0" text="Add New Book">
          <font>
             <Font size="19.0" />
          </font>

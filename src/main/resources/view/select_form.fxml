@@ -3,11 +3,21 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="selectForm" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.SelectFormController">
+<AnchorPane fx:id="selectForm" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.SelectFormController">
    <children>
-      <RadioButton fx:id="radioUser" layoutX="214.0" layoutY="192.0" mnemonicParsing="false" onAction="#radioUserOnAction" text="User" />
-      <RadioButton fx:id="radioAdmin" layoutX="333.0" layoutY="191.0" mnemonicParsing="false" onAction="#radioAdminOnAction" text="Admin" />
-      <Button fx:id="loginButton" layoutX="260.0" layoutY="256.0" mnemonicParsing="false" onAction="#loginBtnOnAction" prefHeight="41.0" prefWidth="93.0" text="Login" />
+      <RadioButton fx:id="radioUser" layoutX="180.0" layoutY="163.0" mnemonicParsing="false" onAction="#radioUserOnAction" text="User" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="radioAdmin" layoutX="326.0" layoutY="163.0" mnemonicParsing="false" onAction="#radioAdminOnAction" text="Admin" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font></RadioButton>
+      <Button fx:id="loginButton" layoutX="253.0" layoutY="228.0" mnemonicParsing="false" onAction="#loginBtnOnAction" prefHeight="51.0" prefWidth="102.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Login" textFill="#030303">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
    </children>
 </AnchorPane>

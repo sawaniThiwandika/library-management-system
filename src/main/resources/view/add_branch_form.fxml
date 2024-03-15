@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="578.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.libraryManagementSystem.controller.AddBranchFormController">
    <children>
-      <Label fx:id="labelAddNewBranch" layoutX="52.0" layoutY="23.0" prefHeight="34.0" prefWidth="177.0" text="Add New Branch">
+      <Label fx:id="labelAddNewBranch" layoutX="52.0" layoutY="36.0" prefHeight="34.0" prefWidth="177.0" text="Add New Branch">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Line endX="336.20001220703125" endY="7.62939453125E-6" layoutX="153.0" layoutY="66.0" opacity="0.36" startX="-100.0" />
+      <Line endX="336.20001220703125" endY="7.62939453125E-6" layoutX="153.0" layoutY="81.0" opacity="0.36" startX="-100.0" />
       <TextField fx:id="txtAddress" layoutX="52.0" layoutY="271.0" prefHeight="27.0" prefWidth="324.0" style="-fx-background-color: white; -fx-border-color: ad6a34; -fx-background-radius: 10; -fx-border-radius: 5;" />
       <Label layoutX="52.0" layoutY="236.0" prefHeight="34.0" prefWidth="177.0" text="Address * ">
          <font>

@@ -24,7 +24,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Label fx:id="labelCount" layoutX="144.0" layoutY="40.0" prefHeight="18.0" prefWidth="88.0" style="-fx-background-color: pink;">
+      <Label fx:id="labelCount" layoutX="132.0" layoutY="34.0" prefHeight="28.0" prefWidth="55.0" style="-fx-background-color: white;">
          <font>
             <Font size="15.0" />
          </font>
