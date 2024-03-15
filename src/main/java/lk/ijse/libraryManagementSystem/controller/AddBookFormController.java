@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import lk.ijse.libraryManagementSystem.bo.BoFactory;
 import lk.ijse.libraryManagementSystem.bo.BookBo;
 import lk.ijse.libraryManagementSystem.bo.BranchBo;
 import lk.ijse.libraryManagementSystem.bo.impl.BookBoImpl;
@@ -57,8 +58,8 @@ public class AddBookFormController {
 
     @FXML
     private TextField txtTitle;
-    BookBo bookBo=new BookBoImpl();
-    BranchBo branchBo= new BranchBoImpl();
+    BookBo bookBo= (BookBo) BoFactory.getBOFactory().getBo(BoFactory.BOTypes.BOOK);
+    BranchBo branchBo= (BranchBo) BoFactory.getBOFactory().getBo(BoFactory.BOTypes.BRANCH);
     String photoPath;
     BookDto dto;
     public void initialize() throws SQLException, IOException {

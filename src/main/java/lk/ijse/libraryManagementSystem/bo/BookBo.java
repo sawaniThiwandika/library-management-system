@@ -5,7 +5,7 @@ import lk.ijse.libraryManagementSystem.dto.BranchDto;
 
 import java.util.List;
 
-public interface BookBo {
+public interface BookBo extends SuperBo{
     public String generateNewBookId();
     public boolean saveBook(BookDto bookDto);
     public List<BookDto> loadAllBook();

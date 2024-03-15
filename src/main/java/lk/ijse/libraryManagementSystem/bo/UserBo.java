@@ -4,7 +4,7 @@ import lk.ijse.libraryManagementSystem.dto.UserDto;
 
 import java.util.ArrayList;
 
-public interface UserBo {
+public interface UserBo extends SuperBo{
     public boolean saveUser(UserDto dto);
     public ArrayList<UserDto> getAllUsers();
     public boolean updateUser(UserDto dto);

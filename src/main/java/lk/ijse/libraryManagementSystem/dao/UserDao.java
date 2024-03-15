@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public interface UserDao {
+public interface UserDao extends SuperDao {
     public boolean save(User user);
     public List<User> getAll();
     boolean update( User user);

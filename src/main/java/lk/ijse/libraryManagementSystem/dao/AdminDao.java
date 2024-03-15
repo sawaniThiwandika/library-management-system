@@ -5,6 +5,6 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public interface AdminDao {
+public interface AdminDao extends SuperDao {
     public List<Admin> getAll();
 }

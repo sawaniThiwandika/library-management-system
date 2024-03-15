@@ -5,7 +5,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public interface TransactionDao {
+public interface TransactionDao extends SuperDao{
     public UserBookDetails generateNewId();
     public boolean save( UserBookDetails transaction);
     public List<UserBookDetails> getAll();

@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.libraryManagementSystem.bo.BoFactory;
 import lk.ijse.libraryManagementSystem.bo.BranchBo;
 import lk.ijse.libraryManagementSystem.bo.UserBo;
 import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
@@ -55,8 +56,8 @@ public class AddUserFormController {
 
     @FXML
     private TextField txtUserName;
-     BranchBo branchBo=new BranchBoImpl();
-    UserBo userBo=new UserBoImpl();
+     BranchBo branchBo= (BranchBo) BoFactory.getBOFactory().getBo(BoFactory.BOTypes.BRANCH);
+    UserBo userBo= (UserBo) BoFactory.getBOFactory().getBo(BoFactory.BOTypes.USER);
     public void initialize() throws SQLException, IOException {
         generateNextId();
         List<BranchDto> branchDtos = loadAllBranchers();

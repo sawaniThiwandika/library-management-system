@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.ijse.libraryManagementSystem.bo.BoFactory;
 import lk.ijse.libraryManagementSystem.bo.BranchBo;
 import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BookDto;
@@ -51,7 +52,7 @@ public class AddBranchFormController {
     private TextField txtEmail;
     @FXML
     private TextField txtName;
-    BranchBo branchBo= new BranchBoImpl();
+    BranchBo branchBo= (BranchBo) BoFactory.getBOFactory().getBo(BoFactory.BOTypes.BRANCH);
     BranchDto branchDto;
     public void initialize() throws SQLException, IOException{
         generateNextId();

@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public interface BookDao {
+public interface BookDao extends SuperDao {
     public Book generateNewId();
     public boolean save( Book book);
     public List<Book> getAll();

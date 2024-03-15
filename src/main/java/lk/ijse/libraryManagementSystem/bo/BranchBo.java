@@ -4,7 +4,7 @@ import lk.ijse.libraryManagementSystem.dto.BranchDto;
 
 import java.util.List;
 
-public interface BranchBo {
+public interface BranchBo extends SuperBo{
     public String generateNewBranchId();
     public boolean saveBranch(BranchDto branchDto);
     public List<BranchDto> loadAllBranch();

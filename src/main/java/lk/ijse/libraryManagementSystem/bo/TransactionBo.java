@@ -5,7 +5,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public interface TransactionBo {
+public interface TransactionBo extends SuperBo {
     public String generateNewTransactionId();
     public boolean saveTransaction( TransactionDto transactionDto);
     public List<TransactionDto> getAllTransactions();

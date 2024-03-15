@@ -5,7 +5,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public interface BranchDao {
+public interface BranchDao extends SuperDao {
    public Branch generateNewId();
    public boolean save( Branch branch);
    public List<Branch> getAll();
