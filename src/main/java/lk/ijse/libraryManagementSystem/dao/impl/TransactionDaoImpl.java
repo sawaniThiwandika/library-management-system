@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class TransactionDaoImpl implements TransactionDao {
@@ -83,5 +84,17 @@ public class TransactionDaoImpl implements TransactionDao {
         transaction.commit();
         session.close();
         return b;
+    }
+
+    @Override
+    public List<UserBookDetails> lateReturns() {
+        Session session = FactoryConfiguration.getFactoryConfiguration().getSession();
+        String hql = " FROM UserBookDetails WHERE returnDate<:date AND isReturn=:status";
+        Query<UserBookDetails> query = session.createQuery(hql, UserBookDetails.class);
+        query.setParameter("date", LocalDate.now());
+        query.setParameter("status", false);
+        List<UserBookDetails> list = query.list();
+        session.close();
+        return list;
     }
 }

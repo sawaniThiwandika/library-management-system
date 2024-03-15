@@ -68,4 +68,14 @@ public class TransactionBoImpl implements TransactionBo {
         boolean updated = transactionDao.returnBook(new UserBookDetails(transactionDto.getId(), transactionDto.getUser(), transactionDto.getBook(), transactionDto.getReserveDate(), transactionDto.getReturnDate(), transactionDto.isReturn()));
         return updated;
     }
+
+    @Override
+    public List<TransactionDto> lateReturns() {
+        List<UserBookDetails> transactionList = transactionDao.lateReturns();
+        ArrayList<TransactionDto> transactionDtos = new ArrayList<>();
+        for (UserBookDetails detail : transactionList) {
+            transactionDtos.add(new TransactionDto(detail.getId(), detail.getUser(), detail.getBook(), detail.getReserveDate(), detail.getReturnDate(), detail.isReturn()));
+        }
+        return transactionDtos;
+    }
 }

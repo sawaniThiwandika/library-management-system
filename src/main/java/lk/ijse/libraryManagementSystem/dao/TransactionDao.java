@@ -11,5 +11,6 @@ public interface TransactionDao {
     public List<UserBookDetails> getAll();
     public boolean update( UserBookDetails transaction);
     public boolean returnBook( UserBookDetails transaction);
+    public  List<UserBookDetails> lateReturns();
 
 }

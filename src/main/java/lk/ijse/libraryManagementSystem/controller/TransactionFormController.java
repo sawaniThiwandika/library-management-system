@@ -62,6 +62,7 @@ public class TransactionFormController {
     ObservableList<TransactionTm> tableValues = FXCollections.observableArrayList();
 
     public void initialize() {
+        getLateReturns();
         setComboBoxValues();
         loadTransactions();
         setCellValueFactory();
@@ -76,6 +77,13 @@ public class TransactionFormController {
         tableTransaction.setItems(tableValues);
         customiseFactory((TableColumn<TransactionTm, String>) colId);
 
+    }
+
+    private void getLateReturns() {
+        List<TransactionDto> transactionDtos = transactionBo.lateReturns();
+        for (int i=0;i<transactionDtos.size();i++){
+            System.out.println("Id "+ transactionDtos.get(i).getId());
+        }
     }
 
     private void customiseFactory(TableColumn<TransactionTm, String> calltypel) {
@@ -103,14 +111,24 @@ public class TransactionFormController {
     }
 
     public boolean checkLate(TableRow<TransactionTm> currentRow) {
+        List<TransactionDto> transactionDtos = transactionBo.lateReturns();
         TransactionTm item = currentRow.getItem();
-        if (item.getReturnDate().isBefore(LocalDate.now())) {
+        /*if (item.getReturnDate().isBefore(LocalDate.now())) {
             if(!item.getIsReturn().isSelected()){
                 return false;
             }
 
         }
+        return true;*/
+        for (int i=0;i<transactionDtos.size();i++){
+            System.out.println("Id "+ transactionDtos.get(i).getId());
+            if(item.getT_id().equals(transactionDtos.get(i).getId())){
+                return false;
+            }
+        }
         return true;
+
+
     }
 
     private void setCellValueFactory() {
