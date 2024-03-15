@@ -83,6 +83,7 @@ public class TransactionFormController {
         for (int i=0;i<transactionDtos.size();i++){
             System.out.println("Id "+ transactionDtos.get(i).getId());
         }
+        labelLate.setText(String.valueOf(transactionDtos.size()));
     }
 
     private void customiseFactory(TableColumn<TransactionTm, String> calltypel) {
@@ -144,6 +145,7 @@ public class TransactionFormController {
 
     private void loadTransactions() {
         allTransactions = transactionBo.getAllTransactions();
+        labelCount.setText(String.valueOf(allTransactions.size()));
 
     }
 

@@ -75,6 +75,7 @@ public class UserFormController {
         int i=1;
 
         ArrayList<UserDto> allUsers = userBo.getAllUsers();
+        labelCount.setText(String.valueOf(allUsers.size()));
 
         for (UserDto dto:allUsers) {
             Button btnViewHistory=new Button("View History");
