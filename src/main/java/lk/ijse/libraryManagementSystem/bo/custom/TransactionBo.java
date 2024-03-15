@@ -1,5 +1,6 @@
-package lk.ijse.libraryManagementSystem.bo;
+package lk.ijse.libraryManagementSystem.bo.custom;
 
+import lk.ijse.libraryManagementSystem.bo.SuperBo;
 import lk.ijse.libraryManagementSystem.dto.TransactionDto;
 import org.hibernate.Session;
 

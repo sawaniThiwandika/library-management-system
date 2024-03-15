@@ -1,7 +1,7 @@
 package lk.ijse.libraryManagementSystem.bo;
 
 
-import lk.ijse.libraryManagementSystem.bo.impl.*;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.*;
 
 
 public class BoFactory {

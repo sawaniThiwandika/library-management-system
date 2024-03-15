@@ -1,7 +1,7 @@
-package lk.ijse.libraryManagementSystem.dao.impl;
+package lk.ijse.libraryManagementSystem.dao.custom.impl;
 
 import lk.ijse.libraryManagementSystem.config.FactoryConfiguration;
-import lk.ijse.libraryManagementSystem.dao.AdminDao;
+import lk.ijse.libraryManagementSystem.dao.custom.AdminDao;
 import lk.ijse.libraryManagementSystem.entity.Admin;
 import org.hibernate.Session;
 import org.hibernate.query.Query;

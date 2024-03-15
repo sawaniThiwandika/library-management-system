@@ -1,8 +1,8 @@
-package lk.ijse.libraryManagementSystem.bo.impl;
+package lk.ijse.libraryManagementSystem.bo.custom.impl;
 
-import lk.ijse.libraryManagementSystem.bo.AdminBo;
-import lk.ijse.libraryManagementSystem.dao.AdminDao;
-import lk.ijse.libraryManagementSystem.dao.impl.AdminDaoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.AdminBo;
+import lk.ijse.libraryManagementSystem.dao.custom.AdminDao;
+import lk.ijse.libraryManagementSystem.dao.custom.impl.AdminDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.AdminDto;
 import lk.ijse.libraryManagementSystem.entity.Admin;
 

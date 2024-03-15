@@ -1,8 +1,8 @@
-package lk.ijse.libraryManagementSystem.bo.impl;
+package lk.ijse.libraryManagementSystem.bo.custom.impl;
 
-import lk.ijse.libraryManagementSystem.bo.TransactionBo;
-import lk.ijse.libraryManagementSystem.dao.TransactionDao;
-import lk.ijse.libraryManagementSystem.dao.impl.TransactionDaoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.TransactionBo;
+import lk.ijse.libraryManagementSystem.dao.custom.TransactionDao;
+import lk.ijse.libraryManagementSystem.dao.custom.impl.TransactionDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.TransactionDto;
 import lk.ijse.libraryManagementSystem.entity.UserBookDetails;
 

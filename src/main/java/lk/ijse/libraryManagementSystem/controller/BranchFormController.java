@@ -12,8 +12,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lk.ijse.libraryManagementSystem.bo.BranchBo;
-import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.BranchBo;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.BranchBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
 import lk.ijse.libraryManagementSystem.dto.tm.BranchTm;
 

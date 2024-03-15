@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
-import lk.ijse.libraryManagementSystem.bo.TransactionBo;
-import lk.ijse.libraryManagementSystem.bo.impl.TransactionBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.TransactionBo;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.TransactionBoImpl;
 import lk.ijse.libraryManagementSystem.dto.TransactionDto;
 import lk.ijse.libraryManagementSystem.dto.UserDto;
 

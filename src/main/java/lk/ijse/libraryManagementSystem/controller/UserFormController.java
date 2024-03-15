@@ -14,8 +14,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lk.ijse.libraryManagementSystem.bo.UserBo;
-import lk.ijse.libraryManagementSystem.bo.impl.UserBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.UserBo;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.UserBoImpl;
 import lk.ijse.libraryManagementSystem.dto.UserDto;
 import lk.ijse.libraryManagementSystem.dto.tm.UserTm;
 
@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class UserFormController {
 

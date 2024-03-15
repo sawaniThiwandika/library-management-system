@@ -1,7 +1,8 @@
-package lk.ijse.libraryManagementSystem.dao;
+package lk.ijse.libraryManagementSystem.dao.custom;
 
+import lk.ijse.libraryManagementSystem.dao.SuperDao;
 import lk.ijse.libraryManagementSystem.entity.Branch;
-import org.hibernate.Session;
+
 
 import java.util.List;
 

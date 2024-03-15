@@ -1,5 +1,6 @@
-package lk.ijse.libraryManagementSystem.dao;
+package lk.ijse.libraryManagementSystem.dao.custom;
 
+import lk.ijse.libraryManagementSystem.dao.SuperDao;
 import lk.ijse.libraryManagementSystem.dto.UserDto;
 import lk.ijse.libraryManagementSystem.entity.Branch;
 import lk.ijse.libraryManagementSystem.entity.User;

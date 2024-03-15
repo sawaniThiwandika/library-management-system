@@ -9,10 +9,10 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lk.ijse.libraryManagementSystem.bo.AdminBo;
-import lk.ijse.libraryManagementSystem.bo.UserBo;
-import lk.ijse.libraryManagementSystem.bo.impl.AdminBoImpl;
-import lk.ijse.libraryManagementSystem.bo.impl.UserBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.AdminBo;
+import lk.ijse.libraryManagementSystem.bo.custom.UserBo;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.AdminBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.UserBoImpl;
 import lk.ijse.libraryManagementSystem.dto.AdminDto;
 import lk.ijse.libraryManagementSystem.dto.UserDto;
 

@@ -1,8 +1,8 @@
-package lk.ijse.libraryManagementSystem.bo.impl;
+package lk.ijse.libraryManagementSystem.bo.custom.impl;
 
-import lk.ijse.libraryManagementSystem.bo.BookBo;
-import lk.ijse.libraryManagementSystem.dao.BookDao;
-import lk.ijse.libraryManagementSystem.dao.impl.BookDaoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.BookBo;
+import lk.ijse.libraryManagementSystem.dao.custom.BookDao;
+import lk.ijse.libraryManagementSystem.dao.custom.impl.BookDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.BookDto;
 import lk.ijse.libraryManagementSystem.entity.Book;
 
@@ -62,7 +62,6 @@ public class BookBoImpl implements BookBo {
     public boolean updateBook(BookDto bookDto) {
 
         boolean saved = bookDao.update(new Book(bookDto.getId(), bookDto.getBranch(), bookDto.getTransactions(), bookDto.getTitle(), bookDto.getAuthor(), bookDto.getGenre(), bookDto.getImagePath(), bookDto.isAvailable()));
-
         return saved;
     }
 

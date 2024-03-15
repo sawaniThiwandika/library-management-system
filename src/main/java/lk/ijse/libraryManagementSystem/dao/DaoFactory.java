@@ -1,7 +1,7 @@
 package lk.ijse.libraryManagementSystem.dao;
 
 
-import lk.ijse.libraryManagementSystem.dao.impl.*;
+import lk.ijse.libraryManagementSystem.dao.custom.impl.*;
 
 public class DaoFactory {
     private static DaoFactory daoFactory;

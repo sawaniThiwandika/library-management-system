@@ -6,15 +6,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.libraryManagementSystem.bo.BranchBo;
-import lk.ijse.libraryManagementSystem.bo.TransactionBo;
-import lk.ijse.libraryManagementSystem.bo.impl.BranchBoImpl;
-import lk.ijse.libraryManagementSystem.bo.impl.TransactionBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.BranchBo;
+import lk.ijse.libraryManagementSystem.bo.custom.TransactionBo;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.BranchBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.TransactionBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
 import lk.ijse.libraryManagementSystem.dto.TransactionDto;
 import lk.ijse.libraryManagementSystem.dto.tm.TransactionTm;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -153,17 +152,23 @@ public class TransactionFormController {
         ObservableList<String> types = FXCollections.observableArrayList();
         List<BranchDto> branchDtos = branchBo.loadAllBranch();
         types.add("All");
-        for (BranchDto dto : branchDtos
+        L1:for (BranchDto dto : branchDtos
         ) {
-            for (int i = 0; i < types.size(); i++) {
-                if (!dto.getName().equals(types.get(i))) {
-                    types.add(dto.getName());
+          for (int i = 0; i < types.size(); i++) {
+                if (dto.getName().equals(types.get(i))) {
+                   /* types.add(dto.getName());*/
+                    continue L1;
                 }
+
             }
             if (types.size() == 1) {
                 types.add(dto.getName());
 
             }
+            else {
+                types.add(dto.getName());
+            }
+
 
         }
 

@@ -9,8 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lk.ijse.libraryManagementSystem.bo.BookBo;
-import lk.ijse.libraryManagementSystem.bo.impl.BookBoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.BookBo;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.BookBoImpl;
 import lk.ijse.libraryManagementSystem.dto.BookDto;
 
 import java.io.IOException;

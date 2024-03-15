@@ -3,17 +3,12 @@ package lk.ijse.libraryManagementSystem.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import lk.ijse.libraryManagementSystem.bo.TransactionBo;
-import lk.ijse.libraryManagementSystem.bo.impl.TransactionBoImpl;
-import lk.ijse.libraryManagementSystem.dto.BookDto;
+import lk.ijse.libraryManagementSystem.bo.custom.TransactionBo;
+import lk.ijse.libraryManagementSystem.bo.custom.impl.TransactionBoImpl;
 import lk.ijse.libraryManagementSystem.dto.TransactionDto;
-import lk.ijse.libraryManagementSystem.dto.UserDto;
-import lk.ijse.libraryManagementSystem.entity.Book;
-import lk.ijse.libraryManagementSystem.entity.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Optional;
 
 public class OneTransactionFormController {

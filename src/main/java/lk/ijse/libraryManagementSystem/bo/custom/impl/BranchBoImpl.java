@@ -1,8 +1,8 @@
-package lk.ijse.libraryManagementSystem.bo.impl;
+package lk.ijse.libraryManagementSystem.bo.custom.impl;
 
-import lk.ijse.libraryManagementSystem.bo.BranchBo;
-import lk.ijse.libraryManagementSystem.dao.BranchDao;
-import lk.ijse.libraryManagementSystem.dao.impl.BranchDaoImpl;
+import lk.ijse.libraryManagementSystem.bo.custom.BranchBo;
+import lk.ijse.libraryManagementSystem.dao.custom.BranchDao;
+import lk.ijse.libraryManagementSystem.dao.custom.impl.BranchDaoImpl;
 import lk.ijse.libraryManagementSystem.dto.BranchDto;
 import lk.ijse.libraryManagementSystem.entity.Branch;
 
