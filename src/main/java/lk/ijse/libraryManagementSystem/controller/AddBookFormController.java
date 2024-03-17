@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import lk.ijse.libraryManagementSystem.bo.BoFactory;
 import lk.ijse.libraryManagementSystem.bo.custom.BookBo;
@@ -23,6 +20,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class AddBookFormController {
@@ -215,9 +213,16 @@ public class AddBookFormController {
 
     @FXML
     void cancelBtnOnAction(ActionEvent event) {
-        BookDto book = bookBo.getBook(labelId.getText());
-        bookBo.deleteBook(book);
+     /*   BookDto book = bookBo.getBook(labelId.getText());*/
+        ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Optional<ButtonType> type = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
 
+        if (type.orElse(no) == yes) {
+            BookDto book = bookBo.getBook(dto.getId());
+            bookBo.deleteBook(book);
+            new Alert(Alert.AlertType.CONFIRMATION, "Successfully deleted").show();
+        }
 
     }
 

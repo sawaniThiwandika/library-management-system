@@ -54,7 +54,7 @@ public class BookFormController {
             else{
                 addBtn.setVisible(false);
                 addBtn.setDisable(true);
-                if(bookDtos.get(i).isAvailable()){
+                if(bookDtos.get(i).isAvailable()&& bookDtos.get(i).getBranch().getId().equals(LoginFormController.dto.getBranch().getId())){
                     smallController.initialize(bookDtos.get(i));
                     if(x/4==1){x=0;y=y+1;}
                     gridPane.add(smallPane, x, y);
